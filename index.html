@@ -2,38 +2,60 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+>
+
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
 <title>U.S. State Capitals</title>
 
 <style>
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
   background: #f4f4f7;
   color: #111;
+
   user-select: none;
   -webkit-user-select: none;
 }
 
 button {
   font-family: inherit;
+  cursor: pointer;
 }
+
+
+/* -------------------- */
+/* SCREENS              */
+/* -------------------- */
 
 .screen {
   display: none;
+
   width: 100%;
   height: 100%;
+
   padding:
     max(24px, env(safe-area-inset-top))
     22px
@@ -44,259 +66,411 @@ button {
   display: flex;
 }
 
-/* HOME */
+
+/* -------------------- */
+/* HOME SCREEN          */
+/* -------------------- */
 
 #homeScreen {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
 }
 
 .home-title {
   font-size: 38px;
   font-weight: 800;
-  margin-bottom: 16px;
+
+  margin-bottom: 40px;
 }
 
 .tap-start {
-  font-size: 25px;
-  font-weight: 600;
-  padding: 30px;
+  font-size: 27px;
+  font-weight: 650;
+
+  padding: 35px;
+
   width: 100%;
   max-width: 500px;
+
   cursor: pointer;
 }
 
 .choose-button {
-  margin-top: 28px;
-  padding: 14px 24px;
+  margin-top: 30px;
+
+  padding: 15px 26px;
+
   border: none;
   border-radius: 14px;
-  background: #fff;
+
+  background: white;
+
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 650;
+
   box-shadow: 0 2px 10px rgba(0,0,0,.08);
-  cursor: pointer;
 }
 
 .selected-count {
-  margin-top: 12px;
-  color: #666;
+  margin-top: 14px;
+
   font-size: 15px;
+  color: #666;
 }
 
-/* STUDY */
+
+/* -------------------- */
+/* STUDY SCREEN         */
+/* -------------------- */
 
 #studyScreen {
   flex-direction: column;
+
   align-items: center;
-  justify-content: space-between;
+
+  position: relative;
 }
 
 .counter {
   width: 100%;
+
   text-align: center;
-  font-size: 17px;
+
+  font-size: 18px;
+
   color: #666;
+
   padding-top: 10px;
+
+  pointer-events: none;
 }
 
-.card-area {
+
+/* This is the large tappable area */
+
+.study-tap-area {
   flex: 1;
+
   width: 100%;
+
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
+
   text-align: center;
+
   cursor: pointer;
 }
 
 .state-name {
-  font-size: clamp(38px, 10vw, 65px);
+  font-size: clamp(40px, 11vw, 68px);
+
   font-weight: 800;
+
   line-height: 1.1;
+
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .capital-name {
-  font-size: clamp(28px, 8vw, 48px);
+  font-size: clamp(30px, 8vw, 48px);
+
   font-weight: 500;
-  margin-top: 24px;
-  min-height: 58px;
+
+  margin-top: 25px;
+
+  min-height: 60px;
+
   color: #555;
 }
 
 .tap-hint {
-  margin-top: 28px;
+  margin-top: 30px;
+
   font-size: 15px;
+
   color: #999;
 }
+
+
+/* -------------------- */
+/* NAVIGATION BUTTONS   */
+/* -------------------- */
 
 .nav {
   width: 100%;
   max-width: 600px;
-  padding-bottom: 10px;
+
+  padding-bottom: 6px;
 }
 
 .nav-row {
-  display: flex;
-  gap: 12px;
   width: 100%;
+
+  display: flex;
+
+  gap: 12px;
 }
 
 .nav button {
-  flex: 1;
-  padding: 16px 8px;
   border: none;
+
   border-radius: 14px;
-  background: #fff;
+
+  background: white;
+
+  padding: 16px 8px;
+
   font-size: 17px;
   font-weight: 650;
+
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
-  cursor: pointer;
+}
+
+.nav-row button {
+  flex: 1;
 }
 
 .home-button {
   width: 100%;
+
   margin-top: 12px;
-  padding: 14px;
-  border: none;
-  border-radius: 14px;
-  background: #e3e3e8;
-  font-size: 17px;
-  font-weight: 650;
-  cursor: pointer;
+
+  background: #e3e3e8 !important;
 }
 
-/* STATE SELECTION */
+.nav button:disabled {
+  opacity: .35;
+}
+
+
+/* -------------------- */
+/* CHOOSE STATES SCREEN */
+/* -------------------- */
 
 #selectionScreen {
   flex-direction: column;
+
   overflow-y: auto;
+
+  -webkit-overflow-scrolling: touch;
 }
 
 .selection-header {
   position: sticky;
+
   top: 0;
+
   background: #f4f4f7;
+
   padding-bottom: 12px;
-  z-index: 2;
+
+  z-index: 10;
 }
 
 .selection-title {
   font-size: 30px;
   font-weight: 800;
-  margin: 0 0 14px;
+
+  margin: 0 0 16px;
 }
 
 .selection-actions {
   display: flex;
+
   gap: 10px;
 }
 
 .selection-actions button {
   flex: 1;
+
   padding: 12px;
+
   border: none;
   border-radius: 12px;
-  background: #fff;
+
+  background: white;
+
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .state-list {
   display: grid;
+
   grid-template-columns: 1fr;
+
   gap: 8px;
-  padding-bottom: 100px;
+
+  padding-bottom: 110px;
 }
 
 .state-option {
-  background: #fff;
+  background: white;
+
   border-radius: 12px;
+
   padding: 15px;
+
   display: flex;
+
   align-items: center;
+
   gap: 14px;
+
   font-size: 18px;
 }
 
 .state-option input {
-  width: 22px;
-  height: 22px;
+  width: 23px;
+  height: 23px;
 }
 
 .done-button {
   position: fixed;
+
   left: 22px;
   right: 22px;
+
   bottom: max(22px, env(safe-area-inset-bottom));
+
   padding: 16px;
+
   border: none;
   border-radius: 14px;
+
   font-size: 18px;
   font-weight: 700;
+
   background: #111;
-  color: #fff;
+
+  color: white;
 }
 
-/* Helps discourage landscape use */
+
+/* -------------------- */
+/* PORTRAIT ONLY        */
+/* -------------------- */
+
 @media (orientation: landscape) {
+
   body::before {
     content: "Please rotate your phone to portrait mode.";
+
     position: fixed;
+
     inset: 0;
+
     background: #f4f4f7;
-    z-index: 9999;
+
+    z-index: 99999;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     padding: 40px;
+
     text-align: center;
+
     font-size: 24px;
     font-weight: 700;
   }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- HOME -->
+
+<!-- ================================= -->
+<!-- HOME SCREEN                       -->
+<!-- ================================= -->
+
 <div id="homeScreen" class="screen active">
 
-  <div class="home-title">U.S. State Capitals</div>
+  <div class="home-title">
+    U.S. State Capitals
+  </div>
 
   <div class="tap-start" id="startArea">
     Tap to Start
   </div>
 
-  <button class="choose-button" id="chooseStates">
+  <button
+    class="choose-button"
+    id="chooseStates"
+  >
     Choose States
   </button>
 
-  <div class="selected-count" id="selectedCount"></div>
+  <div
+    class="selected-count"
+    id="selectedCount"
+  ></div>
 
 </div>
 
 
-<!-- STUDY -->
+
+<!-- ================================= -->
+<!-- STUDY SCREEN                      -->
+<!-- ================================= -->
+
 <div id="studyScreen" class="screen">
 
-  <div class="counter" id="counter"></div>
+  <div
+    class="counter"
+    id="counter"
+  ></div>
 
-  <div class="card-area" id="cardArea">
 
-    <div class="state-name" id="stateName"></div>
+  <!--
+       TAP THIS AREA:
 
-    <div class="capital-name" id="capitalName"></div>
+       First tap = reveal capital
+       Second tap = next state
+  -->
 
-    <div class="tap-hint" id="tapHint">
+  <div
+    class="study-tap-area"
+    id="studyTapArea"
+  >
+
+    <div
+      class="state-name"
+      id="stateName"
+    ></div>
+
+
+    <div
+      class="capital-name"
+      id="capitalName"
+    ></div>
+
+
+    <div
+      class="tap-hint"
+      id="tapHint"
+    >
       Tap to reveal capital
     </div>
 
   </div>
+
+
+
+  <!-- BUTTONS ONLY APPEAR AFTER START -->
 
   <div class="nav">
 
@@ -312,7 +486,11 @@ button {
 
     </div>
 
-    <button class="home-button" id="homeButton">
+
+    <button
+      class="home-button"
+      id="homeButton"
+    >
       Home
     </button>
 
@@ -321,14 +499,20 @@ button {
 </div>
 
 
-<!-- STATE SELECTION -->
+
+<!-- ================================= -->
+<!-- CHOOSE STATES SCREEN              -->
+<!-- ================================= -->
+
 <div id="selectionScreen" class="screen">
+
 
   <div class="selection-header">
 
     <div class="selection-title">
       Choose States
     </div>
+
 
     <div class="selection-actions">
 
@@ -344,18 +528,33 @@ button {
 
   </div>
 
-  <div class="state-list" id="stateList"></div>
 
-  <button class="done-button" id="doneSelection">
+  <div
+    class="state-list"
+    id="stateList"
+  ></div>
+
+
+  <button
+    class="done-button"
+    id="doneSelection"
+  >
     Done
   </button>
+
 
 </div>
 
 
+
 <script>
 
+/* ================================= */
+/* STATES AND CAPITALS               */
+/* ================================= */
+
 const states = [
+
   ["Alabama", "Montgomery"],
   ["Alaska", "Juneau"],
   ["Arizona", "Phoenix"],
@@ -406,115 +605,300 @@ const states = [
   ["West Virginia", "Charleston"],
   ["Wisconsin", "Madison"],
   ["Wyoming", "Cheyenne"]
+
 ];
 
+
+
+/* ================================= */
+/* VARIABLES                         */
+/* ================================= */
+
 let selectedStates = [...states];
+
 let studyOrder = [];
+
 let currentIndex = 0;
+
 let capitalVisible = false;
 
-const homeScreen = document.getElementById("homeScreen");
-const studyScreen = document.getElementById("studyScreen");
-const selectionScreen = document.getElementById("selectionScreen");
 
-const stateName = document.getElementById("stateName");
-const capitalName = document.getElementById("capitalName");
-const counter = document.getElementById("counter");
-const tapHint = document.getElementById("tapHint");
-const stateList = document.getElementById("stateList");
-const selectedCount = document.getElementById("selectedCount");
 
+/* ================================= */
+/* ELEMENTS                          */
+/* ================================= */
+
+const homeScreen =
+  document.getElementById("homeScreen");
+
+const studyScreen =
+  document.getElementById("studyScreen");
+
+const selectionScreen =
+  document.getElementById("selectionScreen");
+
+
+const stateName =
+  document.getElementById("stateName");
+
+const capitalName =
+  document.getElementById("capitalName");
+
+const counter =
+  document.getElementById("counter");
+
+const tapHint =
+  document.getElementById("tapHint");
+
+const studyTapArea =
+  document.getElementById("studyTapArea");
+
+
+const stateList =
+  document.getElementById("stateList");
+
+const selectedCount =
+  document.getElementById("selectedCount");
+
+
+
+/* ================================= */
+/* SHOW SCREEN                       */
+/* ================================= */
 
 function showScreen(screen) {
-  document.querySelectorAll(".screen").forEach(s => {
-    s.classList.remove("active");
-  });
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(function(s) {
+
+      s.classList.remove("active");
+
+    });
+
 
   screen.classList.add("active");
+
 }
 
+
+
+/* ================================= */
+/* RANDOMIZE STATES                  */
+/* ================================= */
 
 function shuffle(array) {
 
   const copy = [...array];
 
-  for (let i = copy.length - 1; i > 0; i--) {
 
-    const j = Math.floor(Math.random() * (i + 1));
+  for (
+    let i = copy.length - 1;
+    i > 0;
+    i--
+  ) {
 
-    [copy[i], copy[j]] = [copy[j], copy[i]];
+    const j =
+      Math.floor(
+        Math.random() * (i + 1)
+      );
+
+
+    [
+      copy[i],
+      copy[j]
+    ] = [
+      copy[j],
+      copy[i]
+    ];
 
   }
 
+
   return copy;
+
 }
 
+
+
+/* ================================= */
+/* SELECTED STATE COUNT              */
+/* ================================= */
 
 function updateSelectedCount() {
 
   selectedCount.textContent =
-    `${selectedStates.length} of 50 states selected`;
+    selectedStates.length +
+    " of 50 states selected";
 
 }
 
 
+
+/* ================================= */
+/* START STUDY                       */
+/* ================================= */
+
 function startStudy() {
 
   if (selectedStates.length === 0) {
-    alert("Please select at least one state.");
+
+    alert(
+      "Please select at least one state."
+    );
+
     return;
+
   }
 
-  studyOrder = shuffle(selectedStates);
+
+  studyOrder =
+    shuffle(selectedStates);
+
 
   currentIndex = 0;
 
   capitalVisible = false;
 
+
   showScreen(studyScreen);
 
+
   displayState();
+
 }
 
+
+
+/* ================================= */
+/* DISPLAY CURRENT STATE             */
+/* ================================= */
 
 function displayState() {
 
-  if (studyOrder.length === 0) return;
+  if (studyOrder.length === 0) {
+    return;
+  }
 
-  const item = studyOrder[currentIndex];
 
-  stateName.textContent = item[0];
+  const item =
+    studyOrder[currentIndex];
 
-  capitalName.textContent =
-    capitalVisible ? item[1] : "";
 
-  tapHint.textContent =
-    capitalVisible
-      ? "Tap to hide capital"
-      : "Tap to reveal capital";
+  stateName.textContent =
+    item[0];
+
+
+  if (capitalVisible) {
+
+    capitalName.textContent =
+      item[1];
+
+    tapHint.textContent =
+      currentIndex === studyOrder.length - 1
+        ? "Tap to finish"
+        : "Tap for next state";
+
+  }
+
+  else {
+
+    capitalName.textContent = "";
+
+    tapHint.textContent =
+      "Tap to reveal capital";
+
+  }
+
 
   counter.textContent =
-    `${currentIndex + 1} of ${studyOrder.length}`;
+    (currentIndex + 1) +
+    " of " +
+    studyOrder.length;
 
-  document.getElementById("previousButton").disabled =
-    currentIndex === 0;
 
-  document.getElementById("nextButton").disabled =
-    currentIndex === studyOrder.length - 1;
+  document
+    .getElementById("previousButton")
+    .disabled =
+      currentIndex === 0;
+
+
+  document
+    .getElementById("nextButton")
+    .disabled =
+      currentIndex ===
+      studyOrder.length - 1;
+
 }
 
 
-function toggleCapital() {
 
-  capitalVisible = !capitalVisible;
+/* ================================= */
+/* MAIN TAP BEHAVIOR                 */
+/* ================================= */
 
-  displayState();
+function handleStudyTap() {
+
+  /*
+     FIRST TAP:
+     reveal capital
+  */
+
+  if (!capitalVisible) {
+
+    capitalVisible = true;
+
+    displayState();
+
+    return;
+
+  }
+
+
+  /*
+     SECOND TAP:
+     move to next state
+  */
+
+  if (
+    currentIndex <
+    studyOrder.length - 1
+  ) {
+
+    currentIndex++;
+
+    capitalVisible = false;
+
+    displayState();
+
+  }
+
+  else {
+
+    /*
+       If you're on the final state
+       and tap after revealing it,
+       return to Home.
+    */
+
+    showScreen(homeScreen);
+
+  }
+
 }
 
+
+
+/* ================================= */
+/* NEXT BUTTON                       */
+/* ================================= */
 
 function nextState() {
 
-  if (currentIndex < studyOrder.length - 1) {
+  if (
+    currentIndex <
+    studyOrder.length - 1
+  ) {
 
     currentIndex++;
 
@@ -526,6 +910,11 @@ function nextState() {
 
 }
 
+
+
+/* ================================= */
+/* PREVIOUS BUTTON                   */
+/* ================================= */
 
 function previousState() {
 
@@ -542,128 +931,307 @@ function previousState() {
 }
 
 
+
+/* ================================= */
+/* BUILD STATE SELECTION LIST        */
+/* ================================= */
+
 function buildStateSelection() {
 
   stateList.innerHTML = "";
 
-  states.forEach((item, index) => {
 
-    const label = document.createElement("label");
+  states.forEach(
+    function(item, index) {
 
-    label.className = "state-option";
+      const label =
+        document.createElement("label");
 
-    const checkbox = document.createElement("input");
 
-    checkbox.type = "checkbox";
+      label.className =
+        "state-option";
 
-    checkbox.dataset.index = index;
 
-    checkbox.checked =
-      selectedStates.some(state => state[0] === item[0]);
+      const checkbox =
+        document.createElement("input");
 
-    const text = document.createElement("span");
 
-    text.textContent = item[0];
+      checkbox.type =
+        "checkbox";
 
-    label.appendChild(checkbox);
 
-    label.appendChild(text);
+      checkbox.dataset.index =
+        index;
 
-    stateList.appendChild(label);
 
-  });
+      checkbox.checked =
+        selectedStates.some(
+          function(state) {
+
+            return (
+              state[0] === item[0]
+            );
+
+          }
+        );
+
+
+      const text =
+        document.createElement("span");
+
+
+      text.textContent =
+        item[0];
+
+
+      label.appendChild(
+        checkbox
+      );
+
+
+      label.appendChild(
+        text
+      );
+
+
+      stateList.appendChild(
+        label
+      );
+
+    }
+  );
 
 }
 
 
+
+/* ================================= */
+/* SAVE STATE SELECTION              */
+/* ================================= */
+
 function saveSelection() {
 
   const checkboxes =
-    stateList.querySelectorAll("input[type='checkbox']");
+    stateList.querySelectorAll(
+      "input[type='checkbox']"
+    );
 
-  selectedStates = [];
 
-  checkboxes.forEach(box => {
+  const newSelection = [];
 
-    if (box.checked) {
 
-      selectedStates.push(states[Number(box.dataset.index)]);
+  checkboxes.forEach(
+    function(box) {
+
+      if (box.checked) {
+
+        newSelection.push(
+          states[
+            Number(
+              box.dataset.index
+            )
+          ]
+        );
+
+      }
 
     }
+  );
 
-  });
 
-  if (selectedStates.length === 0) {
+  if (
+    newSelection.length === 0
+  ) {
 
-    alert("Please select at least one state.");
+    alert(
+      "Please select at least one state."
+    );
 
     return;
 
   }
 
+
+  selectedStates =
+    newSelection;
+
+
   updateSelectedCount();
 
+
   showScreen(homeScreen);
+
 }
 
 
-document.getElementById("startArea")
-  .addEventListener("click", startStudy);
+
+/* ================================= */
+/* START                             */
+/* ================================= */
+
+document
+  .getElementById("startArea")
+  .addEventListener(
+    "click",
+    startStudy
+  );
 
 
-document.getElementById("cardArea")
-  .addEventListener("click", toggleCapital);
+
+/* ================================= */
+/* TAP STUDY SCREEN                  */
+/* ================================= */
+
+studyTapArea
+  .addEventListener(
+    "click",
+    handleStudyTap
+  );
 
 
-document.getElementById("nextButton")
-  .addEventListener("click", nextState);
+
+/* ================================= */
+/* NAVIGATION BUTTONS                */
+/* ================================= */
+
+document
+  .getElementById("nextButton")
+  .addEventListener(
+    "click",
+    function(event) {
+
+      event.stopPropagation();
+
+      nextState();
+
+    }
+  );
 
 
-document.getElementById("previousButton")
-  .addEventListener("click", previousState);
+document
+  .getElementById("previousButton")
+  .addEventListener(
+    "click",
+    function(event) {
+
+      event.stopPropagation();
+
+      previousState();
+
+    }
+  );
 
 
-document.getElementById("homeButton")
-  .addEventListener("click", () => {
+document
+  .getElementById("homeButton")
+  .addEventListener(
+    "click",
+    function(event) {
 
-    showScreen(homeScreen);
+      event.stopPropagation();
 
-  });
+      showScreen(
+        homeScreen
+      );
 
-
-document.getElementById("chooseStates")
-  .addEventListener("click", () => {
-
-    buildStateSelection();
-
-    showScreen(selectionScreen);
-
-  });
+    }
+  );
 
 
-document.getElementById("selectAll")
-  .addEventListener("click", () => {
 
-    stateList
-      .querySelectorAll("input")
-      .forEach(box => box.checked = true);
+/* ================================= */
+/* CHOOSE STATES                     */
+/* ================================= */
 
-  });
+document
+  .getElementById("chooseStates")
+  .addEventListener(
+    "click",
+    function(event) {
+
+      event.stopPropagation();
+
+      buildStateSelection();
+
+      showScreen(
+        selectionScreen
+      );
+
+    }
+  );
 
 
-document.getElementById("clearAll")
-  .addEventListener("click", () => {
 
-    stateList
-      .querySelectorAll("input")
-      .forEach(box => box.checked = false);
+/* ================================= */
+/* SELECT ALL                        */
+/* ================================= */
 
-  });
+document
+  .getElementById("selectAll")
+  .addEventListener(
+    "click",
+    function() {
+
+      stateList
+        .querySelectorAll(
+          "input"
+        )
+        .forEach(
+          function(box) {
+
+            box.checked = true;
+
+          }
+        );
+
+    }
+  );
 
 
-document.getElementById("doneSelection")
-  .addEventListener("click", saveSelection);
 
+/* ================================= */
+/* CLEAR ALL                         */
+/* ================================= */
+
+document
+  .getElementById("clearAll")
+  .addEventListener(
+    "click",
+    function() {
+
+      stateList
+        .querySelectorAll(
+          "input"
+        )
+        .forEach(
+          function(box) {
+
+            box.checked = false;
+
+          }
+        );
+
+    }
+  );
+
+
+
+/* ================================= */
+/* DONE CHOOSING STATES              */
+/* ================================= */
+
+document
+  .getElementById("doneSelection")
+  .addEventListener(
+    "click",
+    saveSelection
+  );
+
+
+
+/* ================================= */
+/* INITIALIZE                        */
+/* ================================= */
 
 updateSelectedCount();
 
