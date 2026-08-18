@@ -16,6 +16,37 @@
 
 <style>
 
+/* =========================================
+   COLORS
+========================================= */
+
+:root {
+
+  --background: #f7f9fd;
+
+  --navy: #081f5c;
+  --blue: #075adf;
+  --blue-light: #eaf2ff;
+
+  --red: #ef3434;
+  --red-light: #fff0f0;
+
+  --text: #0b1838;
+  --gray: #657086;
+  --light-gray: #a4abba;
+
+  --white: #ffffff;
+
+  --blue-border: #1765e8;
+  --red-border: #ef4545;
+
+}
+
+
+/* =========================================
+   GLOBAL
+========================================= */
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
@@ -23,9 +54,12 @@
 
 html,
 body {
+
   margin: 0;
+
   width: 100%;
   height: 100%;
+
   overflow: hidden;
 
   font-family:
@@ -34,32 +68,45 @@ body {
     "Segoe UI",
     sans-serif;
 
-  background: #f4f4f7;
-  color: #111;
+  background:
+    linear-gradient(
+      180deg,
+      #fbfdff 0%,
+      #f5f8fd 50%,
+      #f7f9fc 100%
+    );
+
+  color: var(--text);
 
   user-select: none;
   -webkit-user-select: none;
 
   touch-action: manipulation;
+
   -webkit-text-size-adjust: 100%;
 }
 
 button {
+
   font-family: inherit;
+
   cursor: pointer;
+
   touch-action: manipulation;
 }
 
 .screen {
+
   display: none;
 
   width: 100%;
   height: 100%;
 
   padding:
-    max(24px, env(safe-area-inset-top))
-    22px
-    max(24px, env(safe-area-inset-bottom));
+    max(22px, env(safe-area-inset-top))
+    20px
+    max(20px, env(safe-area-inset-bottom));
+
 }
 
 .screen.active {
@@ -67,126 +114,442 @@ button {
 }
 
 
-/* HOME SCREEN */
+/* =========================================
+   HOME
+========================================= */
 
 #homeScreen {
+
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
+
   text-align: center;
+
+  overflow-y: auto;
 }
 
-.home-title {
-  font-size: 38px;
-  font-weight: 800;
-  margin-bottom: 38px;
-}
+.home-content {
 
-.tap-start {
   width: 100%;
-  max-width: 500px;
-  padding: 35px;
-  font-size: 27px;
-  font-weight: 650;
-  cursor: pointer;
-}
+  max-width: 430px;
 
-.choose-button,
-.missed-review-button {
-  width: 100%;
-  max-width: 320px;
-  margin-top: 16px;
-  padding: 15px 26px;
-
-  border: none;
-  border-radius: 14px;
-
-  background: white;
-
-  font-size: 18px;
-  font-weight: 650;
-
-  box-shadow: 0 2px 10px rgba(0,0,0,.08);
-}
-
-.missed-review-button {
-  background: #333;
-  color: white;
-}
-
-.missed-review-button:disabled {
-  opacity: .35;
-}
-
-.selected-count,
-.missed-count {
-  margin-top: 12px;
-  font-size: 15px;
-  color: #666;
-}
-
-
-/* STUDY SCREEN */
-
-#studyScreen {
+  display: flex;
   flex-direction: column;
+
   align-items: center;
 }
 
 
-/* TOP AREA */
+/* SMALL ICON */
 
-.study-top {
-  width: 100%;
-  max-width: 600px;
+.logo-circle {
 
-  min-height: 46px;
+  width: 72px;
+  height: 72px;
 
-  position: relative;
+  border: 2px solid var(--blue-border);
+
+  border-radius: 50%;
+
+  background: white;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  margin-bottom: 18px;
+
+  box-shadow:
+    0 7px 20px rgba(20,70,150,.10);
+}
+
+.logo-star {
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--blue) 0%,
+      var(--blue) 47%,
+      white 47%,
+      white 58%,
+      var(--red) 58%,
+      var(--red) 72%,
+      white 72%,
+      white 82%,
+      var(--red) 82%
+    );
+
+  color: white;
+
+  font-size: 22px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding-top: 3px;
+}
+
+
+/* TITLE */
+
+.home-title {
+
+  margin: 0;
+
+  color: var(--navy);
+
+  font-size: clamp(44px, 12vw, 60px);
+
+  font-weight: 900;
+
+  line-height: .96;
+
+  letter-spacing: -2.3px;
+}
+
+.home-subtitle {
+
+  margin-top: 20px;
+  margin-bottom: 35px;
+
+  color: var(--gray);
+
+  font-size: 17px;
+
+  line-height: 1.45;
+}
+
+
+/* START BUTTON */
+
+.start-button {
+
+  width: 100%;
+
+  min-height: 72px;
+
+  border: 2px solid #0052ce;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #1169ed,
+      #0649bd
+    );
+
+  color: white;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  box-shadow:
+    0 10px 22px rgba(0,72,190,.20);
+
+  margin-bottom: 20px;
+}
+
+.start-button:active {
+
+  transform: scale(.985);
+
+}
+
+
+/* HOME CARDS */
+
+.home-card {
+
+  width: 100%;
+
+  min-height: 90px;
+
+  border: 2px solid var(--blue-border);
+
+  border-radius: 18px;
+
+  background: rgba(255,255,255,.93);
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 14px 16px;
+
+  margin-bottom: 14px;
+
+  box-shadow:
+    0 7px 18px rgba(20,40,80,.07);
+
+  text-align: left;
+}
+
+.home-card.red-card {
+  border-color: var(--red-border);
+}
+
+.card-icon {
+
+  flex: 0 0 54px;
+
+  width: 54px;
+  height: 54px;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 15px;
+
+  font-size: 28px;
+
+  font-weight: 800;
+}
+
+.card-icon.blue {
+
+  color: white;
+
+  background:
+    linear-gradient(
+      180deg,
+      #2d83fa,
+      #0d60e8
+    );
+
+}
+
+.card-icon.red {
+
+  color: white;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ff5656,
+      #eb2d2d
+    );
+
+}
+
+.card-text {
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+.card-title {
+
+  color: var(--navy);
+
+  font-size: 19px;
+  font-weight: 800;
+
+  line-height: 1.15;
+}
+
+.card-subtitle {
+
+  margin-top: 5px;
+
+  color: var(--gray);
+
+  font-size: 14px;
+}
+
+.card-arrow {
+
+  color: var(--blue);
+
+  font-size: 28px;
+  font-weight: 500;
+
+  margin-left: 10px;
+}
+
+.red-card .card-arrow {
+  color: var(--red);
+}
+
+
+/* STUDY TIP */
+
+.study-tip {
+
+  width: 100%;
+
+  margin-top: 4px;
+
+  padding: 16px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  border: 1.5px solid #8ab7ff;
+
+  border-radius: 18px;
+
+  background: var(--blue-light);
+
+  text-align: left;
+}
+
+.tip-icon {
+
+  flex: 0 0 45px;
+
+  font-size: 30px;
+
+  margin-right: 12px;
+}
+
+.tip-title {
+
+  color: var(--blue);
+
+  font-weight: 800;
+
+  font-size: 17px;
+}
+
+.tip-text {
+
+  margin-top: 3px;
+
+  color: #475876;
+
+  font-size: 14px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   STUDY SCREEN
+========================================= */
+
+#studyScreen {
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.study-shell {
+
+  width: 100%;
+  max-width: 500px;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* TOP ROW */
+
+.study-top {
+
+  position: relative;
+
+  width: 100%;
+
+  min-height: 55px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
 }
 
 .mode-title {
-  text-align: center;
 
-  font-size: 13px;
-  font-weight: 700;
+  position: absolute;
 
-  color: #888;
+  left: 0;
 
-  padding: 0 90px;
+  padding: 9px 12px;
+
+  border: 1.5px solid #ffaaaa;
+
+  border-radius: 999px;
+
+  background: #fff5f5;
+
+  color: var(--red);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: .3px;
+}
+
+.counter {
+
+  padding: 9px 18px;
+
+  border: 1.5px solid #ffd0d0;
+
+  border-radius: 999px;
+
+  background: white;
+
+  color: var(--navy);
+
+  font-size: 17px;
+  font-weight: 800;
+
+  box-shadow:
+    0 5px 12px rgba(40,50,80,.08);
 }
 
 
-/* SMALL MISSED BUTTON */
+/* MISSED BUTTON */
 
 .missed-button {
+
   display: none;
 
   position: absolute;
 
   right: 0;
-  top: 0;
 
-  min-width: 76px;
   height: 36px;
 
-  padding: 0 12px;
+  padding: 0 14px;
 
-  border: none;
+  border: 1.5px solid #dc2020;
+
   border-radius: 10px;
 
-  background: #c94444;
+  background:
+    linear-gradient(
+      180deg,
+      #ff4848,
+      #e72828
+    );
 
   color: white;
 
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 800;
 
-  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  box-shadow:
+    0 5px 10px rgba(220,40,40,.18);
 }
 
 .missed-button.visible {
@@ -194,28 +557,17 @@ button {
 }
 
 .missed-button.already-missed {
-  background: #777;
+
+  border-color: #737987;
+
+  background: #858b97;
 }
 
 
-.counter {
-  width: 100%;
-
-  text-align: center;
-
-  padding-top: 2px;
-
-  font-size: 18px;
-
-  color: #666;
-
-  pointer-events: none;
-}
-
-
-/* MAIN STUDY AREA */
+/* TAP AREA */
 
 .study-tap-area {
+
   flex: 1;
 
   width: 100%;
@@ -224,65 +576,110 @@ button {
   flex-direction: column;
 
   align-items: center;
+
   justify-content: center;
 
-  text-align: center;
-
   cursor: pointer;
+}
 
-  touch-action: manipulation;
+
+/* BIG FLASH CARD */
+
+.study-card {
+
+  position: relative;
+
+  width: 100%;
+
+  flex: 1;
+
+  max-height: 570px;
+
+  min-height: 350px;
+
+  margin: 14px 0;
+
+  border: 2px solid var(--blue-border);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.98),
+      rgba(252,253,255,.94)
+    );
+
+  box-shadow:
+    0 12px 25px rgba(20,50,100,.10);
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
 }
 
 
 /* STATE DISPLAY */
 
 .state-display {
+
   position: relative;
 
   width: 100%;
-  max-width: 520px;
 
-  min-height: 240px;
+  flex: 1;
+
+  min-height: 260px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
 
 
-/* STATE OUTLINE */
+/* STATE SILHOUETTE */
 
 .state-outline {
+
   position: absolute;
 
-  left: 50%;
-  top: 50%;
+  inset: 20px;
 
-  transform: translate(-50%, -50%);
+  display: flex;
 
-  width: min(82vw, 390px);
-  height: 220px;
+  align-items: center;
+  justify-content: center;
 
   opacity: .30;
 
   pointer-events: none;
-
-  z-index: 0;
 }
 
 .state-outline svg {
-  display: block;
 
   width: 100%;
   height: 100%;
+
+  max-width: 390px;
+  max-height: 320px;
 
   overflow: visible;
 }
 
 .state-outline path {
-  fill: #b8b8be;
-  stroke: #777;
+
+  fill: #dce5f3;
+
+  stroke: #7fa5df;
+
   stroke-width: 2;
+
   vector-effect: non-scaling-stroke;
 }
 
@@ -290,114 +687,175 @@ button {
 /* STATE NAME */
 
 .state-name {
+
   position: relative;
 
   z-index: 2;
 
-  padding: 0 10px;
+  padding: 0 20px;
 
-  font-size: clamp(40px, 11vw, 68px);
+  color: var(--navy);
 
-  font-weight: 800;
+  font-size: clamp(42px, 12vw, 66px);
 
-  line-height: 1.1;
+  font-weight: 900;
+
+  line-height: 1;
+
+  text-align: center;
+
+  letter-spacing: -2px;
 
   text-shadow:
-    0 1px 2px rgba(244,244,247,.9),
-    0 0 10px rgba(244,244,247,.85);
+    0 0 12px rgba(255,255,255,.92),
+    0 0 24px rgba(255,255,255,.75);
 }
 
 
 /* CAPITAL */
 
 .capital-name {
-  min-height: 60px;
 
-  margin-top: 5px;
+  position: relative;
 
-  font-size: clamp(30px, 8vw, 48px);
+  z-index: 2;
 
-  font-weight: 500;
+  min-height: 62px;
 
-  color: #555;
+  padding: 0 15px 24px;
+
+  color: var(--blue);
+
+  font-size: clamp(31px, 8vw, 45px);
+
+  font-weight: 750;
+
+  text-align: center;
 }
+
+
+/* TAP HINT */
 
 .tap-hint {
-  margin-top: 30px;
 
-  font-size: 15px;
+  margin: 8px 0 18px;
 
-  color: #999;
+  color: var(--blue);
+
+  font-size: 16px;
+
+  text-align: center;
 }
 
 
-/* NAVIGATION */
+/* =========================================
+   NAVIGATION
+========================================= */
 
 .nav {
-  width: 100%;
-  max-width: 600px;
 
-  padding-bottom: 6px;
+  width: 100%;
+
+  padding-bottom: 2px;
 }
 
 .nav-row {
+
   display: flex;
 
   gap: 12px;
-
-  width: 100%;
 }
 
 .nav button {
-  padding: 16px 8px;
 
-  border: none;
-  border-radius: 14px;
+  min-height: 58px;
+
+  border-radius: 16px;
+
+  font-size: 17px;
+  font-weight: 800;
 
   background: white;
 
-  font-size: 17px;
-  font-weight: 650;
+  border: 1.8px solid var(--blue-border);
 
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  color: var(--blue);
+
+  box-shadow:
+    0 6px 14px rgba(30,50,90,.08);
 }
 
 .nav-row button {
+
   flex: 1;
 }
 
+#nextButton {
+
+  background:
+    linear-gradient(
+      180deg,
+      #0b65eb,
+      #084ec2
+    );
+
+  color: white;
+}
+
+.nav button:disabled {
+
+  opacity: .25;
+
+  background: white !important;
+
+  color: var(--gray) !important;
+
+  border-color: #bec5d1 !important;
+}
+
+
+/* HOME BUTTON */
+
 .home-button {
+
   width: 100%;
 
   margin-top: 12px;
 
-  background: #e3e3e8 !important;
+  background: white !important;
+
+  color: var(--blue) !important;
 }
 
+
+/* CLEAR MISSED */
+
 .clear-missed-button {
+
   display: none;
 
   width: 100%;
 
   margin-top: 12px;
 
-  background: #c94444 !important;
+  border-color: var(--red-border) !important;
 
-  color: white;
+  background: white !important;
+
+  color: var(--red) !important;
 }
 
 .clear-missed-button.visible {
   display: block;
 }
 
-.nav button:disabled {
-  opacity: .35;
-}
 
-
-/* CHOOSE STATES SCREEN */
+/* =========================================
+   SELECT STATES
+========================================= */
 
 #selectionScreen {
+
   flex-direction: column;
 
   overflow-y: auto;
@@ -406,104 +864,160 @@ button {
 }
 
 .selection-header {
+
   position: sticky;
 
   top: 0;
 
   z-index: 10;
 
-  background: #f4f4f7;
+  padding-bottom: 14px;
 
-  padding-bottom: 12px;
+  background: var(--background);
 }
 
 .selection-title {
-  margin: 0 0 16px;
 
-  font-size: 30px;
+  margin: 5px 0 18px;
 
-  font-weight: 800;
+  color: var(--navy);
+
+  font-size: 34px;
+  font-weight: 900;
+
+  letter-spacing: -1px;
 }
 
 .selection-actions {
+
   display: flex;
 
   gap: 10px;
 }
 
 .selection-actions button {
+
   flex: 1;
 
-  padding: 12px;
+  min-height: 46px;
 
-  border: none;
-  border-radius: 12px;
+  border: 1.5px solid var(--blue-border);
+
+  border-radius: 13px;
 
   background: white;
 
-  font-size: 16px;
-  font-weight: 650;
+  color: var(--blue);
+
+  font-size: 15px;
+  font-weight: 750;
 }
 
+#clearAll {
+
+  color: var(--red);
+
+  border-color: var(--red-border);
+}
+
+
+/* STATE LIST */
+
 .state-list {
+
   display: grid;
 
   grid-template-columns: 1fr;
 
-  gap: 8px;
+  gap: 9px;
 
-  padding-bottom: 110px;
+  padding-bottom: 100px;
 }
 
 .state-option {
+
   display: flex;
 
   align-items: center;
 
   gap: 14px;
 
-  padding: 15px;
+  min-height: 58px;
+
+  padding: 12px 15px;
+
+  border: 1px solid #d7e2f5;
+
+  border-radius: 14px;
 
   background: white;
 
-  border-radius: 12px;
+  color: var(--navy);
 
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 650;
+
+  box-shadow:
+    0 3px 9px rgba(20,40,80,.04);
 }
 
 .state-option input {
-  width: 23px;
-  height: 23px;
+
+  width: 22px;
+  height: 22px;
+
+  accent-color: var(--blue);
 }
 
+
+/* DONE BUTTON */
+
 .done-button {
+
   position: fixed;
 
-  left: 22px;
-  right: 22px;
+  left: 20px;
+  right: 20px;
 
-  bottom: max(22px, env(safe-area-inset-bottom));
+  bottom:
+    max(
+      20px,
+      env(safe-area-inset-bottom)
+    );
 
-  padding: 16px;
+  min-height: 58px;
 
-  border: none;
-  border-radius: 14px;
+  border: 2px solid #0048bb;
 
-  background: #111;
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #0c67ed,
+      #084fc6
+    );
 
   color: white;
 
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 800;
+
+  box-shadow:
+    0 9px 20px rgba(0,75,190,.20);
 }
 
 
-/* PORTRAIT ONLY */
+/* =========================================
+   LANDSCAPE LOCK MESSAGE
+========================================= */
 
 @media (orientation: landscape) {
 
   body::before {
-    content: "Please rotate your phone to portrait mode.";
+
+    content:
+      "Please rotate your phone to portrait mode.";
 
     position: fixed;
 
@@ -518,14 +1032,59 @@ button {
 
     padding: 40px;
 
-    background: #f4f4f7;
+    background: var(--background);
+
+    color: var(--navy);
 
     text-align: center;
 
     font-size: 24px;
 
-    font-weight: 700;
+    font-weight: 800;
   }
+
+}
+
+
+/* SMALLER IPHONES */
+
+@media (max-height: 720px) {
+
+  .logo-circle {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 10px;
+  }
+
+  .logo-star {
+    width: 30px;
+    height: 30px;
+    font-size: 17px;
+  }
+
+  .home-title {
+    font-size: 42px;
+  }
+
+  .home-subtitle {
+    margin-top: 10px;
+    margin-bottom: 18px;
+  }
+
+  .start-button {
+    min-height: 58px;
+    margin-bottom: 12px;
+  }
+
+  .home-card {
+    min-height: 76px;
+    margin-bottom: 9px;
+  }
+
+  .study-tip {
+    padding: 11px;
+  }
+
 }
 
 </style>
@@ -534,180 +1093,325 @@ button {
 <body>
 
 
-<!-- HOME SCREEN -->
+<!-- =====================================
+     HOME SCREEN
+===================================== -->
 
-<div id="homeScreen" class="screen active">
+<div
+  id="homeScreen"
+  class="screen active"
+>
 
-  <div class="home-title">
-    U.S. State Capitals
-  </div>
-
-  <div
-    class="tap-start"
-    id="startArea"
-  >
-    Tap to Start
-  </div>
-
-  <button
-    class="choose-button"
-    id="chooseStates"
-  >
-    Choose States
-  </button>
-
-  <div
-    class="selected-count"
-    id="selectedCount"
-  ></div>
-
-  <button
-    class="missed-review-button"
-    id="reviewMissedButton"
-  >
-    Review Missed
-  </button>
-
-  <div
-    class="missed-count"
-    id="missedCount"
-  ></div>
-
-</div>
+  <div class="home-content">
 
 
-<!-- STUDY SCREEN -->
+    <div class="logo-circle">
 
-<div id="studyScreen" class="screen">
-
-
-  <div class="study-top">
-
-    <div
-      class="mode-title"
-      id="modeTitle"
-    ></div>
-
-    <button
-      class="missed-button"
-      id="missedButton"
-    >
-      Missed
-    </button>
-
-  </div>
-
-
-  <div
-    class="counter"
-    id="counter"
-  ></div>
-
-
-  <div
-    class="study-tap-area"
-    id="studyTapArea"
-  >
-
-
-    <div class="state-display">
-
-
-      <div
-        class="state-outline"
-        id="stateOutline"
-      ></div>
-
-
-      <div
-        class="state-name"
-        id="stateName"
-      ></div>
-
+      <div class="logo-star">
+        ★
+      </div>
 
     </div>
 
 
-    <div
-      class="capital-name"
-      id="capitalName"
-    ></div>
+    <h1 class="home-title">
+      U.S. STATE<br>
+      CAPITALS
+    </h1>
 
 
-    <div
-      class="tap-hint"
-      id="tapHint"
-    >
-      Tap to reveal capital
-    </div>
-
-
-  </div>
-
-
-  <div class="nav">
-
-    <div class="nav-row">
-
-      <button id="previousButton">
-        ◀ Previous
-      </button>
-
-      <button id="nextButton">
-        Next ▶
-      </button>
-
+    <div class="home-subtitle">
+      Learn all 50 state capitals<br>
+      in an easy and fun way.
     </div>
 
 
     <button
-      class="home-button"
-      id="homeButton"
+      class="start-button"
+      id="startArea"
     >
-      Home
+      ▣ &nbsp; Tap to Start
     </button>
 
 
-    <button
-      class="clear-missed-button"
-      id="clearMissedButton"
+    <!-- CHOOSE STATES -->
+
+    <div
+      class="home-card"
+      id="chooseStates"
     >
-      Clear Missed List
-    </button>
+
+      <div class="card-icon blue">
+        ★
+      </div>
+
+      <div class="card-text">
+
+        <div class="card-title">
+          Choose States
+        </div>
+
+        <div
+          class="card-subtitle"
+          id="selectedCount"
+        ></div>
+
+      </div>
+
+      <div class="card-arrow">
+        ›
+      </div>
+
+    </div>
+
+
+    <!-- REVIEW MISSED -->
+
+    <div
+      class="home-card red-card"
+      id="reviewMissedCard"
+    >
+
+      <div class="card-icon red">
+        ★
+      </div>
+
+      <div class="card-text">
+
+        <div
+          class="card-title"
+          id="reviewMissedTitle"
+        >
+          Review Missed (0)
+        </div>
+
+        <div
+          class="card-subtitle"
+          id="missedCount"
+        >
+          0 missed capitals saved
+        </div>
+
+      </div>
+
+      <div class="card-arrow">
+        ›
+      </div>
+
+    </div>
+
+
+    <!-- TIP -->
+
+    <div class="study-tip">
+
+      <div class="tip-icon">
+        💡
+      </div>
+
+      <div>
+
+        <div class="tip-title">
+          Study Tip
+        </div>
+
+        <div class="tip-text">
+          Tap once to reveal the capital,
+          then tap again for the next state.
+        </div>
+
+      </div>
+
+    </div>
+
 
   </div>
 
 </div>
 
 
-<!-- CHOOSE STATES -->
 
-<div id="selectionScreen" class="screen">
+<!-- =====================================
+     STUDY SCREEN
+===================================== -->
+
+<div
+  id="studyScreen"
+  class="screen"
+>
+
+  <div class="study-shell">
+
+
+    <!-- TOP -->
+
+    <div class="study-top">
+
+
+      <div
+        class="mode-title"
+        id="modeTitle"
+      ></div>
+
+
+      <div
+        class="counter"
+        id="counter"
+      ></div>
+
+
+      <button
+        class="missed-button"
+        id="missedButton"
+      >
+        Missed
+      </button>
+
+
+    </div>
+
+
+    <!-- TAP AREA -->
+
+    <div
+      class="study-tap-area"
+      id="studyTapArea"
+    >
+
+
+      <div class="study-card">
+
+
+        <div class="state-display">
+
+
+          <div
+            class="state-outline"
+            id="stateOutline"
+          ></div>
+
+
+          <div
+            class="state-name"
+            id="stateName"
+          ></div>
+
+
+        </div>
+
+
+        <div
+          class="capital-name"
+          id="capitalName"
+        ></div>
+
+
+      </div>
+
+
+      <div
+        class="tap-hint"
+        id="tapHint"
+      >
+        Tap to reveal capital
+      </div>
+
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="nav">
+
+
+      <div class="nav-row">
+
+
+        <button
+          id="previousButton"
+        >
+          ◀ Previous
+        </button>
+
+
+        <button
+          id="nextButton"
+        >
+          Next ▶
+        </button>
+
+
+      </div>
+
+
+      <button
+        class="home-button"
+        id="homeButton"
+      >
+        ⌂ &nbsp; Home
+      </button>
+
+
+      <button
+        class="clear-missed-button"
+        id="clearMissedButton"
+      >
+        Clear Missed List
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================
+     CHOOSE STATES
+===================================== -->
+
+<div
+  id="selectionScreen"
+  class="screen"
+>
+
 
   <div class="selection-header">
+
 
     <div class="selection-title">
       Choose States
     </div>
 
+
     <div class="selection-actions">
+
 
       <button id="selectAll">
         Select All
       </button>
 
+
       <button id="clearAll">
         Clear All
       </button>
 
+
     </div>
 
+
   </div>
+
 
   <div
     class="state-list"
     id="stateList"
   ></div>
+
 
   <button
     class="done-button"
@@ -716,13 +1420,17 @@ button {
     Done
   </button>
 
+
 </div>
+
 
 
 <script type="module">
 
 
-/* STATES AND CAPITALS */
+/* =========================================
+   STATES
+========================================= */
 
 const states = [
 
@@ -780,40 +1488,61 @@ const states = [
 ];
 
 
-/* LOAD STATE OUTLINE DATA */
+/* =========================================
+   STATE OUTLINE DATA
+========================================= */
 
 let usaMap = null;
 
+
 try {
 
-  const module =
+  const mapModule =
     await import(
       "https://cdn.jsdelivr.net/npm/@svg-maps/usa@2.0.0/+esm"
     );
 
+
   usaMap =
-    module.default || module;
+    mapModule.default ||
+    mapModule;
+
 
 } catch (error) {
 
   console.log(
-    "State outline map could not be loaded.",
+    "State outlines could not be loaded.",
     error
   );
 
 }
 
 
-/* LOAD SAVED STATE SELECTIONS */
+/* =========================================
+   SAVED STATE SELECTIONS
+========================================= */
 
 let selectedStates;
 
-const savedStateNames =
-  JSON.parse(
-    localStorage.getItem(
-      "stateCapitalSelections"
-    )
-  );
+
+let savedStateNames = null;
+
+
+try {
+
+  savedStateNames =
+    JSON.parse(
+      localStorage.getItem(
+        "stateCapitalSelections"
+      )
+    );
+
+} catch (error) {
+
+  savedStateNames = null;
+
+}
+
 
 if (
   Array.isArray(savedStateNames) &&
@@ -839,25 +1568,42 @@ if (
 }
 
 
-/* LOAD MISSED STATES */
+/* =========================================
+   SAVED MISSED CAPITALS
+========================================= */
 
-let missedStateNames =
-  JSON.parse(
-    localStorage.getItem(
-      "stateCapitalMissed"
-    )
-  );
+let missedStateNames = [];
 
-if (
-  !Array.isArray(missedStateNames)
-) {
+
+try {
+
+  const savedMissed =
+    JSON.parse(
+      localStorage.getItem(
+        "stateCapitalMissed"
+      )
+    );
+
+
+  if (
+    Array.isArray(savedMissed)
+  ) {
+
+    missedStateNames =
+      savedMissed;
+
+  }
+
+} catch (error) {
 
   missedStateNames = [];
 
 }
 
 
-/* VARIABLES */
+/* =========================================
+   VARIABLES
+========================================= */
 
 let studyOrder = [];
 
@@ -865,85 +1611,109 @@ let currentIndex = 0;
 
 let capitalVisible = false;
 
-let studyMode = "normal";
+let studyMode =
+  "normal";
 
 
-/* ELEMENTS */
+/* =========================================
+   ELEMENTS
+========================================= */
 
 const homeScreen =
   document.getElementById(
     "homeScreen"
   );
 
+
 const studyScreen =
   document.getElementById(
     "studyScreen"
   );
+
 
 const selectionScreen =
   document.getElementById(
     "selectionScreen"
   );
 
+
 const stateName =
   document.getElementById(
     "stateName"
   );
+
 
 const capitalName =
   document.getElementById(
     "capitalName"
   );
 
+
 const counter =
   document.getElementById(
     "counter"
   );
+
 
 const tapHint =
   document.getElementById(
     "tapHint"
   );
 
+
 const studyTapArea =
   document.getElementById(
     "studyTapArea"
   );
+
 
 const stateList =
   document.getElementById(
     "stateList"
   );
 
+
 const selectedCount =
   document.getElementById(
     "selectedCount"
   );
+
 
 const missedCount =
   document.getElementById(
     "missedCount"
   );
 
+
+const reviewMissedTitle =
+  document.getElementById(
+    "reviewMissedTitle"
+  );
+
+
+const reviewMissedCard =
+  document.getElementById(
+    "reviewMissedCard"
+  );
+
+
 const missedButton =
   document.getElementById(
     "missedButton"
   );
 
-const reviewMissedButton =
-  document.getElementById(
-    "reviewMissedButton"
-  );
 
 const clearMissedButton =
   document.getElementById(
     "clearMissedButton"
   );
 
+
 const modeTitle =
   document.getElementById(
     "modeTitle"
   );
+
 
 const stateOutline =
   document.getElementById(
@@ -951,21 +1721,26 @@ const stateOutline =
   );
 
 
-/* SHOW SCREEN */
+/* =========================================
+   SCREEN SWITCHING
+========================================= */
 
 function showScreen(screen) {
 
   document
-    .querySelectorAll(".screen")
+    .querySelectorAll(
+      ".screen"
+    )
     .forEach(
-      function(s) {
+      function(item) {
 
-        s.classList.remove(
+        item.classList.remove(
           "active"
         );
 
       }
     );
+
 
   screen.classList.add(
     "active"
@@ -974,11 +1749,15 @@ function showScreen(screen) {
 }
 
 
-/* SHUFFLE */
+/* =========================================
+   SHUFFLE
+========================================= */
 
 function shuffle(array) {
 
-  const copy = [...array];
+  const copy =
+    [...array];
+
 
   for (
     let i = copy.length - 1;
@@ -992,6 +1771,7 @@ function shuffle(array) {
         (i + 1)
       );
 
+
     [
       copy[i],
       copy[j]
@@ -1002,20 +1782,29 @@ function shuffle(array) {
 
   }
 
+
   return copy;
 
 }
 
 
-/* SHOW STATE OUTLINE */
+/* =========================================
+   STATE OUTLINE
+========================================= */
 
-function showStateOutline(state) {
+function showStateOutline(
+  state
+) {
 
-  stateOutline.innerHTML = "";
+  stateOutline.innerHTML =
+    "";
+
 
   if (
     !usaMap ||
-    !Array.isArray(usaMap.locations)
+    !Array.isArray(
+      usaMap.locations
+    )
   ) {
 
     return;
@@ -1100,8 +1889,10 @@ function showStateOutline(state) {
           [
             box.x - padding,
             box.y - padding,
-            box.width + padding * 2,
-            box.height + padding * 2
+            box.width +
+              padding * 2,
+            box.height +
+              padding * 2
           ].join(" ")
         );
 
@@ -1110,6 +1901,7 @@ function showStateOutline(state) {
           "preserveAspectRatio",
           "xMidYMid meet"
         );
+
 
       } catch (error) {
 
@@ -1125,7 +1917,9 @@ function showStateOutline(state) {
 }
 
 
-/* UPDATE SELECTED COUNT */
+/* =========================================
+   UPDATE HOME COUNTS
+========================================= */
 
 function updateSelectedCount() {
 
@@ -1136,34 +1930,54 @@ function updateSelectedCount() {
 }
 
 
-/* UPDATE MISSED COUNT */
-
 function updateMissedCount() {
 
   const amount =
     missedStateNames.length;
 
 
-  missedCount.textContent =
-    amount === 1
-      ? "1 missed capital saved"
-      : amount +
-        " missed capitals saved";
-
-
-  reviewMissedButton.textContent =
+  reviewMissedTitle.textContent =
     "Review Missed (" +
     amount +
     ")";
 
 
-  reviewMissedButton.disabled =
-    amount === 0;
+  if (
+    amount === 1
+  ) {
+
+    missedCount.textContent =
+      "1 missed capital saved";
+
+  } else {
+
+    missedCount.textContent =
+      amount +
+      " missed capitals saved";
+
+  }
+
+
+  if (
+    amount === 0
+  ) {
+
+    reviewMissedCard.style.opacity =
+      ".48";
+
+  } else {
+
+    reviewMissedCard.style.opacity =
+      "1";
+
+  }
 
 }
 
 
-/* SAVE SELECTIONS */
+/* =========================================
+   SAVE DATA
+========================================= */
 
 function saveSelectionsToStorage() {
 
@@ -1179,13 +1993,13 @@ function saveSelectionsToStorage() {
 
   localStorage.setItem(
     "stateCapitalSelections",
-    JSON.stringify(names)
+    JSON.stringify(
+      names
+    )
   );
 
 }
 
-
-/* SAVE MISSED */
 
 function saveMissedToStorage() {
 
@@ -1196,12 +2010,15 @@ function saveMissedToStorage() {
     )
   );
 
+
   updateMissedCount();
 
 }
 
 
-/* START NORMAL STUDY */
+/* =========================================
+   START NORMAL STUDY
+========================================= */
 
 function startStudy() {
 
@@ -1228,9 +2045,12 @@ function startStudy() {
     );
 
 
-  currentIndex = 0;
+  currentIndex =
+    0;
 
-  capitalVisible = false;
+
+  capitalVisible =
+    false;
 
 
   showScreen(
@@ -1243,7 +2063,9 @@ function startStudy() {
 }
 
 
-/* START MISSED STUDY */
+/* =========================================
+   REVIEW MISSED
+========================================= */
 
 function startMissedStudy() {
 
@@ -1282,9 +2104,12 @@ function startMissedStudy() {
     );
 
 
-  currentIndex = 0;
+  currentIndex =
+    0;
 
-  capitalVisible = false;
+
+  capitalVisible =
+    false;
 
 
   showScreen(
@@ -1297,7 +2122,9 @@ function startMissedStudy() {
 }
 
 
-/* DISPLAY STATE */
+/* =========================================
+   DISPLAY CURRENT STATE
+========================================= */
 
 function displayState() {
 
@@ -1325,13 +2152,19 @@ function displayState() {
   );
 
 
+  counter.textContent =
+    (currentIndex + 1) +
+    " of " +
+    studyOrder.length;
+
+
   if (
     studyMode ===
     "missed"
   ) {
 
     modeTitle.textContent =
-      "REVIEWING MISSED";
+      "↻ REVIEWING MISSED";
 
 
     clearMissedButton
@@ -1418,7 +2251,7 @@ function displayState() {
 
 
     tapHint.textContent =
-      "Tap to reveal capital";
+      "☝︎  Tap to reveal capital";
 
 
     missedButton
@@ -1427,12 +2260,6 @@ function displayState() {
       );
 
   }
-
-
-  counter.textContent =
-    (currentIndex + 1) +
-    " of " +
-    studyOrder.length;
 
 
   document
@@ -1454,7 +2281,9 @@ function displayState() {
 }
 
 
-/* MARK MISSED */
+/* =========================================
+   MARK MISSED
+========================================= */
 
 function markMissed() {
 
@@ -1502,7 +2331,9 @@ function markMissed() {
 }
 
 
-/* STUDY TAP */
+/* =========================================
+   TAP BEHAVIOR
+========================================= */
 
 function handleStudyTap() {
 
@@ -1510,9 +2341,12 @@ function handleStudyTap() {
     !capitalVisible
   ) {
 
-    capitalVisible = true;
+    capitalVisible =
+      true;
+
 
     displayState();
+
 
     return;
 
@@ -1526,7 +2360,10 @@ function handleStudyTap() {
 
     currentIndex++;
 
-    capitalVisible = false;
+
+    capitalVisible =
+      false;
+
 
     displayState();
 
@@ -1535,7 +2372,9 @@ function handleStudyTap() {
 }
 
 
-/* NEXT */
+/* =========================================
+   NEXT
+========================================= */
 
 function nextState() {
 
@@ -1546,7 +2385,10 @@ function nextState() {
 
     currentIndex++;
 
-    capitalVisible = false;
+
+    capitalVisible =
+      false;
+
 
     displayState();
 
@@ -1555,7 +2397,9 @@ function nextState() {
 }
 
 
-/* PREVIOUS */
+/* =========================================
+   PREVIOUS
+========================================= */
 
 function previousState() {
 
@@ -1565,7 +2409,10 @@ function previousState() {
 
     currentIndex--;
 
-    capitalVisible = false;
+
+    capitalVisible =
+      false;
+
 
     displayState();
 
@@ -1574,7 +2421,9 @@ function previousState() {
 }
 
 
-/* CLEAR MISSED */
+/* =========================================
+   CLEAR MISSED
+========================================= */
 
 function clearMissedList() {
 
@@ -1602,17 +2451,23 @@ function clearMissedList() {
   }
 
 
-  missedStateNames = [];
+  missedStateNames =
+    [];
 
 
   saveMissedToStorage();
 
 
-  studyOrder = [];
+  studyOrder =
+    [];
 
-  currentIndex = 0;
 
-  capitalVisible = false;
+  currentIndex =
+    0;
+
+
+  capitalVisible =
+    false;
 
 
   showScreen(
@@ -1622,7 +2477,9 @@ function clearMissedList() {
 }
 
 
-/* BUILD STATE SELECTION */
+/* =========================================
+   BUILD STATE SELECTION
+========================================= */
 
 function buildStateSelection() {
 
@@ -1631,7 +2488,11 @@ function buildStateSelection() {
 
 
   states.forEach(
-    function(item, index) {
+    function(
+      item,
+      index
+    ) {
+
 
       const label =
         document.createElement(
@@ -1700,7 +2561,9 @@ function buildStateSelection() {
 }
 
 
-/* SAVE SELECTION */
+/* =========================================
+   SAVE SELECTED STATES
+========================================= */
 
 function saveSelection() {
 
@@ -1765,6 +2628,11 @@ function saveSelection() {
 }
 
 
+/* =========================================
+   EVENT LISTENERS
+========================================= */
+
+
 /* START */
 
 document
@@ -1777,22 +2645,37 @@ document
   );
 
 
-/* REVIEW MISSED */
+/* CHOOSE STATES */
 
-reviewMissedButton
+document
+  .getElementById(
+    "chooseStates"
+  )
   .addEventListener(
     "click",
-    function(event) {
+    function() {
 
-      event.stopPropagation();
+      buildStateSelection();
 
-      startMissedStudy();
+
+      showScreen(
+        selectionScreen
+      );
 
     }
   );
 
 
-/* STUDY AREA */
+/* REVIEW MISSED */
+
+reviewMissedCard
+  .addEventListener(
+    "click",
+    startMissedStudy
+  );
+
+
+/* MAIN TAP */
 
 studyTapArea
   .addEventListener(
@@ -1801,7 +2684,7 @@ studyTapArea
   );
 
 
-/* MISSED BUTTON */
+/* MISSED */
 
 missedButton
   .addEventListener(
@@ -1809,6 +2692,7 @@ missedButton
     function(event) {
 
       event.stopPropagation();
+
 
       markMissed();
 
@@ -1828,6 +2712,7 @@ document
 
       event.stopPropagation();
 
+
       nextState();
 
     }
@@ -1845,6 +2730,7 @@ document
     function(event) {
 
       event.stopPropagation();
+
 
       previousState();
 
@@ -1865,18 +2751,18 @@ document
       event.stopPropagation();
 
 
+      updateMissedCount();
+
+
       showScreen(
         homeScreen
       );
-
-
-      updateMissedCount();
 
     }
   );
 
 
-/* CLEAR MISSED */
+/* CLEAR MISSED LIST */
 
 clearMissedButton
   .addEventListener(
@@ -1885,31 +2771,8 @@ clearMissedButton
 
       event.stopPropagation();
 
+
       clearMissedList();
-
-    }
-  );
-
-
-/* CHOOSE STATES */
-
-document
-  .getElementById(
-    "chooseStates"
-  )
-  .addEventListener(
-    "click",
-    function(event) {
-
-      event.stopPropagation();
-
-
-      buildStateSelection();
-
-
-      showScreen(
-        selectionScreen
-      );
 
     }
   );
@@ -1981,11 +2844,14 @@ document
   );
 
 
-/* INITIALIZE */
+/* =========================================
+   INITIALIZE
+========================================= */
 
 updateSelectedCount();
 
 updateMissedCount();
+
 
 </script>
 
