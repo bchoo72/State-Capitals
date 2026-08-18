@@ -1,23 +1,15 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 
 <meta
-
   name="viewport"
-
   content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
-
 >
 
 <meta name="apple-mobile-web-app-capable" content="yes">
-
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
 <meta name="apple-mobile-web-app-title" content="State Capitals">
 
 <title>State Capitals</title>
@@ -25,223 +17,154 @@
 <style>
 
 :root {
-
   --background: #f7f9fd;
-
   --navy: #0b225a;
-
   --navy-dark: #06163c;
-
   --blue: #0a62e8;
-
-  --blue-2: #2f81f7;
-
   --blue-light: #eaf2ff;
-
   --red: #ef3d43;
-
   --red-light: #fff0f1;
-
   --text: #0b1838;
-
   --gray: #667086;
-
-  --light-gray: #a7afbd;
-
   --white: #ffffff;
-
   --blue-border: #2d6fe8;
-
   --red-border: #ee5156;
-
 }
+
 
 /* GLOBAL */
 
 * {
-
   box-sizing: border-box;
-
   -webkit-tap-highlight-color: transparent;
-
 }
 
 html,
-
 body {
-
   margin: 0;
 
   width: 100%;
-
   height: 100%;
 
   overflow: hidden;
 
   font-family:
-
     "Avenir Next",
-
     Avenir,
-
     -apple-system,
-
     BlinkMacSystemFont,
-
     "SF Pro Display",
-
     "Segoe UI",
-
     sans-serif;
 
   background:
-
     linear-gradient(
-
       180deg,
-
       #fbfdff 0%,
-
       #f5f8fd 45%,
-
       #f7f9fc 100%
-
     );
 
   color: var(--text);
 
   user-select: none;
-
   -webkit-user-select: none;
 
   touch-action: manipulation;
 
   -webkit-text-size-adjust: 100%;
-
 }
 
 button {
-
   font-family: inherit;
-
   cursor: pointer;
-
   touch-action: manipulation;
-
 }
 
 .screen {
-
   display: none;
 
   width: 100%;
-
   height: 100%;
 
   padding:
-
     max(22px, env(safe-area-inset-top))
-
     20px
-
     max(20px, env(safe-area-inset-bottom));
-
 }
 
 .screen.active {
-
   display: flex;
-
 }
 
-/* HOME */
+
+/* =========================================
+   HOME
+========================================= */
 
 #homeScreen {
-
   position: relative;
 
   flex-direction: column;
 
   align-items: center;
-
   justify-content: center;
 
   text-align: center;
 
   overflow-y: auto;
-
 }
 
 .home-decoration {
-
   position: absolute;
-
   inset: 0;
 
   pointer-events: none;
 
   overflow: hidden;
-
 }
 
 .star {
-
   position: absolute;
 
   color: #cfe0ff;
 
   font-size: 22px;
-
 }
 
 .star.one {
-
   top: 12%;
-
   left: 15%;
-
 }
 
 .star.two {
-
   top: 19%;
-
   right: 16%;
 
   font-size: 17px;
-
 }
 
 .star.three {
-
   top: 31%;
-
   left: 9%;
 
   font-size: 13px;
-
 }
 
 .star.four {
-
   top: 26%;
-
   right: 9%;
 
   font-size: 12px;
-
 }
 
 .flag-stripes {
-
   position: absolute;
 
   width: 250px;
-
   height: 180px;
 
   left: -90px;
-
   bottom: 3%;
 
   transform: rotate(-12deg);
@@ -251,265 +174,207 @@ button {
   opacity: .12;
 
   background:
-
     repeating-linear-gradient(
-
       0deg,
-
       var(--red) 0px,
-
       var(--red) 12px,
-
       transparent 12px,
-
       transparent 25px
-
     );
-
 }
 
 .blue-glow {
-
   position: absolute;
 
   width: 330px;
-
   height: 330px;
 
   top: -150px;
-
   right: -150px;
 
   border-radius: 50%;
 
   background:
-
     radial-gradient(
-
       circle,
-
       rgba(35,117,255,.13),
-
       rgba(35,117,255,0) 68%
-
     );
-
 }
 
 .home-content {
-
   position: relative;
 
   z-index: 2;
 
   width: 100%;
-
   max-width: 430px;
 
   display: flex;
-
   flex-direction: column;
 
   align-items: center;
-
 }
+
 
 /* LOGO */
 
 .logo-circle {
-
-  width: 76px;
-
-  height: 76px;
+  width: 70px;
+  height: 70px;
 
   border: 2px solid var(--blue-border);
 
-  border-radius: 24px;
+  border-radius: 22px;
 
   background:
-
     linear-gradient(
-
       145deg,
-
       #ffffff,
-
       #edf4ff
-
     );
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
   box-shadow:
-
     0 9px 22px rgba(20,70,150,.14);
-
 }
 
 .logo-inner {
-
   position: relative;
 
-  width: 44px;
+  width: 41px;
+  height: 41px;
 
-  height: 44px;
-
-  border-radius: 15px;
+  border-radius: 13px;
 
   overflow: hidden;
 
   background:
-
     repeating-linear-gradient(
-
       0deg,
-
       var(--red) 0px,
-
       var(--red) 5px,
-
       white 5px,
-
       white 10px
-
     );
-
 }
 
 .logo-blue {
-
   position: absolute;
 
   left: 0;
-
   top: 0;
 
   width: 55%;
-
   height: 55%;
 
   background: var(--blue);
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   color: white;
 
-  font-size: 17px;
-
+  font-size: 16px;
 }
 
-/* HOME TITLE */
+
+/* HOME TITLE — MORE SPACED OUT */
 
 .home-title {
-
   margin: 0;
 
   color: var(--navy);
 
-  font-size: clamp(43px, 11.5vw, 59px);
+  font-size: clamp(35px, 9vw, 47px);
 
-  font-weight: 900;
+  font-weight: 800;
 
-  line-height: .98;
+  line-height: 1.22;
 
-  letter-spacing: -2.1px;
+  letter-spacing: .4px;
 
+  text-align: center;
+}
+
+.home-title-line {
+  display: block;
+}
+
+.home-title-line + .home-title-line {
+  margin-top: 6px;
 }
 
 .home-subtitle {
-
-  margin-top: 18px;
-
+  margin-top: 19px;
   margin-bottom: 34px;
 
   color: var(--gray);
 
-  font-size: 17px;
+  font-size: 16px;
 
-  line-height: 1.45;
+  line-height: 1.5;
 
   font-weight: 500;
-
 }
+
 
 /* START */
 
 .start-button {
-
   width: 100%;
 
-  min-height: 72px;
+  min-height: 70px;
 
   border: 2px solid #0049b9;
 
   border-radius: 21px;
 
   background:
-
     linear-gradient(
-
       180deg,
-
       #1673f2,
-
       #074cb9
-
     );
 
   color: white;
 
-  font-size: 23px;
-
+  font-size: 22px;
   font-weight: 800;
 
-  letter-spacing: -.4px;
-
   box-shadow:
-
     0 12px 25px rgba(0,72,190,.22);
 
   margin-bottom: 18px;
-
 }
 
 .start-button:active {
-
   transform: scale(.985);
-
 }
+
 
 /* HOME CARDS */
 
 .home-card {
-
   width: 100%;
 
-  min-height: 92px;
+  min-height: 88px;
 
   border: 1.8px solid var(--blue-border);
 
   border-radius: 20px;
 
   background:
-
     linear-gradient(
-
       145deg,
-
       rgba(255,255,255,.98),
-
       rgba(247,250,255,.96)
-
     );
 
   display: flex;
@@ -518,102 +383,75 @@ button {
 
   padding: 14px 16px;
 
-  margin-bottom: 14px;
+  margin-bottom: 13px;
 
   box-shadow:
-
     0 8px 20px rgba(20,40,80,.08);
 
   text-align: left;
 
+  cursor: pointer;
 }
 
 .home-card.red-card {
-
   border-color: var(--red-border);
-
 }
 
 .card-icon {
+  flex: 0 0 54px;
 
-  flex: 0 0 56px;
-
-  width: 56px;
-
-  height: 56px;
+  width: 54px;
+  height: 54px;
 
   border-radius: 16px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   margin-right: 15px;
 
-  font-size: 27px;
+  font-size: 25px;
 
   font-weight: 800;
 
   color: white;
-
 }
 
 .card-icon.blue {
-
   background:
-
     linear-gradient(
-
       145deg,
-
       #4b96ff,
-
       #0b5dde
-
     );
-
 }
 
 .card-icon.red {
-
   background:
-
     linear-gradient(
-
       145deg,
-
       #ff6b6b,
-
       #e9363d
-
     );
-
 }
 
 .card-text {
-
   flex: 1;
 
   min-width: 0;
-
 }
 
 .card-title {
-
   color: var(--navy);
 
-  font-size: 19px;
-
+  font-size: 18px;
   font-weight: 800;
 
   line-height: 1.1;
-
 }
 
 .card-subtitle {
-
   margin-top: 5px;
 
   color: var(--gray);
@@ -621,55 +459,43 @@ button {
   font-size: 14px;
 
   font-weight: 500;
-
 }
 
 .card-arrow {
-
   color: var(--blue);
 
   font-size: 28px;
-
   font-weight: 600;
 
   margin-left: 10px;
-
 }
 
 .red-card .card-arrow {
-
   color: var(--red);
-
 }
 
-/* STUDY */
+
+/* =========================================
+   STUDY
+========================================= */
 
 #studyScreen {
-
   flex-direction: column;
 
   align-items: center;
-
 }
 
 .study-shell {
-
   width: 100%;
-
   max-width: 500px;
 
   height: 100%;
 
   display: flex;
-
   flex-direction: column;
-
 }
 
-/* STUDY TOP */
-
 .study-top {
-
   position: relative;
 
   width: 100%;
@@ -679,13 +505,10 @@ button {
   display: flex;
 
   justify-content: center;
-
   align-items: center;
-
 }
 
 .mode-title {
-
   position: absolute;
 
   left: 0;
@@ -701,15 +524,12 @@ button {
   color: var(--red);
 
   font-size: 11px;
-
   font-weight: 800;
 
   letter-spacing: .3px;
-
 }
 
 .counter {
-
   padding: 9px 18px;
 
   border: 1.5px solid #bdd1f8;
@@ -721,19 +541,16 @@ button {
   color: var(--navy);
 
   font-size: 17px;
-
   font-weight: 800;
 
   box-shadow:
-
     0 5px 13px rgba(40,50,80,.08);
-
 }
+
 
 /* MISSED BUTTON */
 
 .missed-button {
-
   display: none;
 
   position: absolute;
@@ -749,67 +566,46 @@ button {
   border-radius: 10px;
 
   background:
-
     linear-gradient(
-
       180deg,
-
       #ff565c,
-
       #e62d35
-
     );
 
   color: white;
 
   font-size: 13px;
-
   font-weight: 800;
-
-  box-shadow:
-
-    0 5px 11px rgba(220,40,40,.18);
-
 }
 
 .missed-button.visible {
-
   display: block;
-
 }
 
 .missed-button.already-missed {
-
   border-color: #717885;
 
   background: #858b96;
-
 }
 
-/* STUDY TAP AREA */
+
+/* STUDY AREA */
 
 .study-tap-area {
-
   flex: 1;
 
   width: 100%;
 
   display: flex;
-
   flex-direction: column;
 
   align-items: center;
-
   justify-content: center;
 
   cursor: pointer;
-
 }
 
-/* FLASH CARD */
-
 .study-card {
-
   position: relative;
 
   width: 100%;
@@ -827,19 +623,13 @@ button {
   border-radius: 25px;
 
   background:
-
     linear-gradient(
-
       180deg,
-
       rgba(255,255,255,.99),
-
       rgba(248,251,255,.96)
-
     );
 
   box-shadow:
-
     0 14px 28px rgba(20,50,100,.12);
 
   overflow: hidden;
@@ -849,51 +639,15 @@ button {
   flex-direction: column;
 
   align-items: center;
-
   justify-content: center;
-
-}
-
-.study-card::before {
-
-  content: "";
-
-  position: absolute;
-
-  width: 220px;
-
-  height: 220px;
-
-  top: -105px;
-
-  right: -85px;
-
-  border-radius: 50%;
-
-  background:
-
-    radial-gradient(
-
-      circle,
-
-      rgba(37,116,237,.10),
-
-      rgba(37,116,237,0)
-
-    );
-
-  pointer-events: none;
-
 }
 
 .study-card::after {
-
   content: "★";
 
   position: absolute;
 
   left: 20px;
-
   bottom: 18px;
 
   color: #e4edff;
@@ -901,13 +655,9 @@ button {
   font-size: 27px;
 
   pointer-events: none;
-
 }
 
-/* STATE DISPLAY */
-
 .state-display {
-
   position: relative;
 
   width: 100%;
@@ -919,15 +669,10 @@ button {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
-
 }
 
-/* STATE OUTLINE */
-
 .state-outline {
-
   position: absolute;
 
   inset: 20px;
@@ -935,31 +680,24 @@ button {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   opacity: .30;
 
   pointer-events: none;
-
 }
 
 .state-outline svg {
-
   width: 100%;
-
   height: 100%;
 
   max-width: 390px;
-
   max-height: 300px;
 
   overflow: visible;
-
 }
 
 .state-outline path {
-
   fill: #dce7f6;
 
   stroke: #648fd0;
@@ -967,13 +705,9 @@ button {
   stroke-width: 2.2;
 
   vector-effect: non-scaling-stroke;
-
 }
 
-/* STATE NAME */
-
 .state-name {
-
   position: relative;
 
   z-index: 2;
@@ -993,17 +727,11 @@ button {
   letter-spacing: -2px;
 
   text-shadow:
-
     0 0 14px rgba(255,255,255,.95),
-
     0 0 26px rgba(255,255,255,.82);
-
 }
 
-/* CAPITAL */
-
 .capital-name {
-
   position: relative;
 
   z-index: 2;
@@ -1019,51 +747,39 @@ button {
   font-weight: 800;
 
   text-align: center;
-
-  letter-spacing: -.6px;
-
 }
 
-/* TAP HINT */
-
 .tap-hint {
-
   margin: 6px 0 14px;
 
   color: var(--blue);
 
   font-size: 16px;
-
   font-weight: 600;
 
   text-align: center;
-
 }
 
-/* BIG NAVIGATION */
+
+/* NAV */
 
 .nav {
-
   width: 100%;
 
   padding-bottom: 2px;
 
   flex-shrink: 0;
-
 }
 
 .nav-row {
-
   display: flex;
 
   gap: 12px;
 
   width: 100%;
-
 }
 
 .nav-row button {
-
   flex: 1;
 
   min-height: 64px;
@@ -1074,62 +790,37 @@ button {
 
   font-weight: 850;
 
-  letter-spacing: -.2px;
-
   box-shadow:
-
     0 8px 18px rgba(30,50,90,.12);
-
 }
 
-/* PREVIOUS */
-
 #previousButton {
-
   border: 2px solid var(--blue-border);
 
   background:
-
     linear-gradient(
-
       180deg,
-
       #ffffff,
-
       #f3f7ff
-
     );
 
   color: var(--blue);
-
 }
 
-/* NEXT */
-
 #nextButton {
-
   border: 2px solid #084dbd;
 
   background:
-
     linear-gradient(
-
       180deg,
-
       #1673f2,
-
       #074cb9
-
     );
 
   color: white;
-
 }
 
-/* DISABLED */
-
 .nav button:disabled {
-
   opacity: .3;
 
   background: white !important;
@@ -1139,13 +830,9 @@ button {
   border-color: #bec5d1 !important;
 
   box-shadow: none;
-
 }
 
-/* HOME BUTTON */
-
 .home-button {
-
   width: 100%;
 
   min-height: 56px;
@@ -1156,34 +843,16 @@ button {
 
   border-radius: 17px;
 
-  background:
-
-    linear-gradient(
-
-      180deg,
-
-      #ffffff,
-
-      #f6f9ff
-
-    );
+  background: white;
 
   color: var(--blue);
 
   font-size: 17px;
 
   font-weight: 800;
-
-  box-shadow:
-
-    0 6px 14px rgba(30,50,90,.07);
-
 }
 
-/* CLEAR MISSED */
-
 .clear-missed-button {
-
   display: none;
 
   width: 100%;
@@ -1196,46 +865,35 @@ button {
 
   border-radius: 17px;
 
-  background:
-
-    linear-gradient(
-
-      180deg,
-
-      #fffafa,
-
-      #fff1f1
-
-    );
+  background: #fff7f7;
 
   color: var(--red);
 
   font-size: 16px;
 
   font-weight: 800;
-
 }
 
 .clear-missed-button.visible {
-
   display: block;
-
 }
 
-/* SELECTION SCREEN */
 
-#selectionScreen {
+/* =========================================
+   STATE SELECTION
+========================================= */
 
+#selectionScreen,
+#missedListScreen {
   flex-direction: column;
 
   overflow-y: auto;
 
   -webkit-overflow-scrolling: touch;
-
 }
 
-.selection-header {
-
+.selection-header,
+.missed-list-header {
   position: sticky;
 
   top: 0;
@@ -1244,34 +902,39 @@ button {
 
   padding-bottom: 14px;
 
-  background: var(--background);
-
+  background: #f7f9fd;
 }
 
-.selection-title {
-
-  margin: 5px 0 18px;
+.selection-title,
+.missed-list-title {
+  margin: 5px 0 6px;
 
   color: var(--navy);
 
-  font-size: 34px;
+  font-size: 32px;
 
-  font-weight: 900;
-
-  letter-spacing: -1px;
-
+  font-weight: 850;
 }
 
-.selection-actions {
+.screen-subtitle {
+  margin: 0 0 18px;
 
+  color: var(--gray);
+
+  font-size: 14px;
+
+  line-height: 1.4;
+}
+
+.selection-actions,
+.missed-list-actions {
   display: flex;
 
   gap: 10px;
-
 }
 
-.selection-actions button {
-
+.selection-actions button,
+.missed-list-actions button {
   flex: 1;
 
   min-height: 46px;
@@ -1285,35 +948,28 @@ button {
   color: var(--blue);
 
   font-size: 15px;
-
   font-weight: 750;
-
 }
 
-#clearAll {
-
+#clearAll,
+#clearMissedFromList {
   color: var(--red);
 
   border-color: var(--red-border);
-
 }
 
-/* STATE LIST */
-
-.state-list {
-
+.state-list,
+.missed-state-list {
   display: grid;
 
   grid-template-columns: 1fr;
 
   gap: 9px;
 
-  padding-bottom: 100px;
-
+  padding-bottom: 105px;
 }
 
 .state-option {
-
   display: flex;
 
   align-items: center;
@@ -1328,58 +984,120 @@ button {
 
   border-radius: 15px;
 
-  background:
-
-    linear-gradient(
-
-      145deg,
-
-      #ffffff,
-
-      #f9fbff
-
-    );
+  background: white;
 
   color: var(--navy);
 
   font-size: 17px;
-
   font-weight: 650;
-
-  box-shadow:
-
-    0 4px 10px rgba(20,40,80,.04);
-
 }
 
 .state-option input {
-
   width: 22px;
-
   height: 22px;
 
   accent-color: var(--blue);
-
 }
 
-/* DONE BUTTON */
+
+/* MISSED LIST ROW */
+
+.missed-state-row {
+  display: flex;
+
+  align-items: center;
+
+  min-height: 70px;
+
+  padding: 12px 13px 12px 17px;
+
+  border: 1.5px solid #dce4f2;
+
+  border-radius: 17px;
+
+  background: white;
+
+  box-shadow:
+    0 4px 11px rgba(25,45,85,.05);
+}
+
+.missed-state-info {
+  flex: 1;
+
+  min-width: 0;
+
+  text-align: left;
+}
+
+.missed-state-name {
+  color: var(--navy);
+
+  font-size: 18px;
+
+  font-weight: 800;
+}
+
+.missed-capital-name {
+  margin-top: 3px;
+
+  color: var(--gray);
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+.remove-missed-button {
+  flex: 0 0 auto;
+
+  min-height: 40px;
+
+  padding: 0 13px;
+
+  margin-left: 12px;
+
+  border: 1.5px solid var(--red-border);
+
+  border-radius: 12px;
+
+  background: var(--red-light);
+
+  color: var(--red);
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+.empty-missed {
+  margin-top: 45px;
+
+  padding: 30px 20px;
+
+  border: 1.5px dashed #b7c5de;
+
+  border-radius: 18px;
+
+  color: var(--gray);
+
+  text-align: center;
+
+  line-height: 1.5;
+}
+
+
+/* FIXED BOTTOM BUTTON */
 
 .done-button {
-
   position: fixed;
 
   left: 20px;
-
   right: 20px;
 
   bottom:
-
     max(
-
       20px,
-
       env(safe-area-inset-bottom)
-
     );
 
   min-height: 58px;
@@ -1389,15 +1107,10 @@ button {
   border-radius: 17px;
 
   background:
-
     linear-gradient(
-
       180deg,
-
       #126ced,
-
       #084fc4
-
     );
 
   color: white;
@@ -1407,19 +1120,16 @@ button {
   font-weight: 800;
 
   box-shadow:
-
     0 9px 20px rgba(0,75,190,.20);
-
 }
+
 
 /* LANDSCAPE */
 
 @media (orientation: landscape) {
 
   body::before {
-
     content:
-
       "Please rotate your phone to portrait mode.";
 
     position: fixed;
@@ -1431,7 +1141,6 @@ button {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     padding: 40px;
@@ -1445,107 +1154,81 @@ button {
     font-size: 24px;
 
     font-weight: 800;
-
   }
 
 }
+
 
 /* SMALLER PHONES */
 
 @media (max-height: 720px) {
 
   .logo-circle {
+    width: 55px;
+    height: 55px;
 
-    width: 58px;
-
-    height: 58px;
-
-    margin-bottom: 10px;
-
+    margin-bottom: 12px;
   }
 
   .logo-inner {
-
-    width: 34px;
-
-    height: 34px;
-
-  }
-
-  .logo-blue {
-
-    font-size: 13px;
-
+    width: 32px;
+    height: 32px;
   }
 
   .home-title {
+    font-size: 34px;
 
-    font-size: 41px;
+    line-height: 1.12;
+  }
 
+  .home-title-line + .home-title-line {
+    margin-top: 2px;
   }
 
   .home-subtitle {
-
-    margin-top: 9px;
-
-    margin-bottom: 17px;
-
+    margin-top: 8px;
+    margin-bottom: 15px;
   }
 
   .start-button {
+    min-height: 56px;
 
-    min-height: 58px;
-
-    margin-bottom: 11px;
-
+    margin-bottom: 10px;
   }
 
   .home-card {
+    min-height: 73px;
 
-    min-height: 76px;
-
-    margin-bottom: 9px;
-
+    margin-bottom: 8px;
   }
 
   .card-icon {
+    width: 45px;
+    height: 45px;
 
-    width: 48px;
-
-    height: 48px;
-
-    flex-basis: 48px;
-
+    flex-basis: 45px;
   }
 
   .nav-row button {
-
-    min-height: 56px;
-
-  }
-
-  .home-button {
-
-    min-height: 50px;
-
+    min-height: 55px;
   }
 
 }
 
 </style>
-
 </head>
+
 
 <body>
 
-<!-- HOME -->
+
+<!-- =========================================
+     HOME
+========================================= -->
 
 <div
-
   id="homeScreen"
-
   class="screen active"
-
 >
 
   <div class="home-decoration">
@@ -1554,538 +1237,521 @@ button {
 
     <div class="flag-stripes"></div>
 
-    <div class="star one">
-
-      ★
-
-    </div>
-
-    <div class="star two">
-
-      ★
-
-    </div>
-
-    <div class="star three">
-
-      ★
-
-    </div>
-
-    <div class="star four">
-
-      ★
-
-    </div>
+    <div class="star one">★</div>
+    <div class="star two">★</div>
+    <div class="star three">★</div>
+    <div class="star four">★</div>
 
   </div>
 
+
   <div class="home-content">
+
 
     <div class="logo-circle">
 
       <div class="logo-inner">
 
         <div class="logo-blue">
-
           ★
-
         </div>
 
       </div>
 
     </div>
 
+
     <h1 class="home-title">
 
-      U.S. STATE<br>
+      <span class="home-title-line">
+        U.S. STATE
+      </span>
 
-      CAPITALS
+      <span class="home-title-line">
+        CAPITALS
+      </span>
 
     </h1>
 
+
     <div class="home-subtitle">
-
       Learn all 50 state capitals<br>
-
       at your own pace.
-
     </div>
 
+
     <button
-
       class="start-button"
-
       id="startArea"
-
     >
-
       Tap to Start
-
     </button>
 
+
     <div
-
       class="home-card"
-
       id="chooseStates"
-
     >
 
       <div class="card-icon blue">
-
         🇺🇸
-
       </div>
 
       <div class="card-text">
 
         <div class="card-title">
-
           Choose States
-
         </div>
 
         <div
-
           class="card-subtitle"
-
           id="selectedCount"
-
         ></div>
 
       </div>
 
       <div class="card-arrow">
-
         ›
-
       </div>
 
     </div>
 
+
     <div
-
       class="home-card red-card"
-
       id="reviewMissedCard"
-
     >
 
       <div class="card-icon red">
-
         ★
-
       </div>
 
       <div class="card-text">
 
         <div
-
           class="card-title"
-
           id="reviewMissedTitle"
-
         >
-
           Review Missed (0)
-
         </div>
 
         <div
-
           class="card-subtitle"
-
           id="missedCount"
-
         >
-
           0 missed capitals saved
-
         </div>
 
       </div>
 
       <div class="card-arrow">
-
         ›
-
       </div>
 
     </div>
+
+
+    <div
+      class="home-card red-card"
+      id="viewMissedListCard"
+    >
+
+      <div class="card-icon red">
+        ≡
+      </div>
+
+      <div class="card-text">
+
+        <div class="card-title">
+          Missed States
+        </div>
+
+        <div class="card-subtitle">
+          View or remove saved states
+        </div>
+
+      </div>
+
+      <div class="card-arrow">
+        ›
+      </div>
+
+    </div>
+
 
   </div>
 
 </div>
 
-<!-- STUDY -->
+
+
+<!-- =========================================
+     STUDY
+========================================= -->
 
 <div
-
   id="studyScreen"
-
   class="screen"
-
 >
 
   <div class="study-shell">
 
+
     <div class="study-top">
 
-      <div
 
+      <div
         class="mode-title"
-
         id="modeTitle"
-
       ></div>
+
 
       <div
-
         class="counter"
-
         id="counter"
-
       ></div>
+
 
       <button
-
         class="missed-button"
-
         id="missedButton"
-
       >
-
         Missed
-
       </button>
+
 
     </div>
 
+
     <div
-
       class="study-tap-area"
-
       id="studyTapArea"
-
     >
+
 
       <div class="study-card">
 
+
         <div class="state-display">
 
-          <div
 
+          <div
             class="state-outline"
-
             id="stateOutline"
-
           ></div>
+
 
           <div
-
             class="state-name"
-
             id="stateName"
-
           ></div>
+
 
         </div>
 
+
         <div
-
           class="capital-name"
-
           id="capitalName"
-
         ></div>
 
+
       </div>
+
 
       <div
-
         class="tap-hint"
-
         id="tapHint"
-
       >
-
         Tap to reveal capital
-
       </div>
 
+
     </div>
+
 
     <div class="nav">
 
+
       <div class="nav-row">
 
-        <button
 
+        <button
           id="previousButton"
-
         >
-
           ◀ Previous
-
         </button>
+
 
         <button
-
           id="nextButton"
-
         >
-
           Next ▶
-
         </button>
+
 
       </div>
 
-      <button
 
+      <button
         class="home-button"
-
         id="homeButton"
-
       >
-
         Home
-
       </button>
+
 
       <button
-
         class="clear-missed-button"
-
         id="clearMissedButton"
-
       >
-
         Clear Missed List
-
       </button>
+
 
     </div>
+
 
   </div>
 
 </div>
 
-<!-- CHOOSE STATES -->
+
+
+<!-- =========================================
+     CHOOSE STATES
+========================================= -->
 
 <div
-
   id="selectionScreen"
-
   class="screen"
-
 >
+
 
   <div class="selection-header">
 
+
     <div class="selection-title">
-
       Choose States
-
     </div>
+
+
+    <div class="screen-subtitle">
+      Select the states you want included
+      in your regular study sessions.
+    </div>
+
 
     <div class="selection-actions">
 
+
       <button id="selectAll">
-
         Select All
-
       </button>
+
 
       <button id="clearAll">
-
         Clear All
-
       </button>
+
 
     </div>
 
+
   </div>
 
+
   <div
-
     class="state-list"
-
     id="stateList"
-
   ></div>
 
+
   <button
-
     class="done-button"
-
     id="doneSelection"
-
   >
-
     Done
-
   </button>
+
 
 </div>
 
+
+
+<!-- =========================================
+     MISSED STATES LIST
+========================================= -->
+
+<div
+  id="missedListScreen"
+  class="screen"
+>
+
+
+  <div class="missed-list-header">
+
+
+    <div class="missed-list-title">
+      Missed States
+    </div>
+
+
+    <div
+      class="screen-subtitle"
+      id="missedListSubtitle"
+    >
+      States you have marked as missed.
+    </div>
+
+
+    <div class="missed-list-actions">
+
+
+      <button id="reviewFromList">
+        Review
+      </button>
+
+
+      <button id="clearMissedFromList">
+        Clear All
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
+  <div
+    class="missed-state-list"
+    id="missedStateList"
+  ></div>
+
+
+  <button
+    class="done-button"
+    id="missedListDone"
+  >
+    Back to Home
+  </button>
+
+
+</div>
+
+
+
 <script type="module">
+
+
+/* =========================================
+   STATES
+========================================= */
 
 const states = [
 
   ["Alabama", "Montgomery"],
-
   ["Alaska", "Juneau"],
-
   ["Arizona", "Phoenix"],
-
   ["Arkansas", "Little Rock"],
-
   ["California", "Sacramento"],
-
   ["Colorado", "Denver"],
-
   ["Connecticut", "Hartford"],
-
   ["Delaware", "Dover"],
-
   ["Florida", "Tallahassee"],
-
   ["Georgia", "Atlanta"],
-
   ["Hawaii", "Honolulu"],
-
   ["Idaho", "Boise"],
-
   ["Illinois", "Springfield"],
-
   ["Indiana", "Indianapolis"],
-
   ["Iowa", "Des Moines"],
-
   ["Kansas", "Topeka"],
-
   ["Kentucky", "Frankfort"],
-
   ["Louisiana", "Baton Rouge"],
-
   ["Maine", "Augusta"],
-
   ["Maryland", "Annapolis"],
-
   ["Massachusetts", "Boston"],
-
   ["Michigan", "Lansing"],
-
   ["Minnesota", "Saint Paul"],
-
   ["Mississippi", "Jackson"],
-
   ["Missouri", "Jefferson City"],
-
   ["Montana", "Helena"],
-
   ["Nebraska", "Lincoln"],
-
   ["Nevada", "Carson City"],
-
   ["New Hampshire", "Concord"],
-
   ["New Jersey", "Trenton"],
-
   ["New Mexico", "Santa Fe"],
-
   ["New York", "Albany"],
-
   ["North Carolina", "Raleigh"],
-
   ["North Dakota", "Bismarck"],
-
   ["Ohio", "Columbus"],
-
   ["Oklahoma", "Oklahoma City"],
-
   ["Oregon", "Salem"],
-
   ["Pennsylvania", "Harrisburg"],
-
   ["Rhode Island", "Providence"],
-
   ["South Carolina", "Columbia"],
-
   ["South Dakota", "Pierre"],
-
   ["Tennessee", "Nashville"],
-
   ["Texas", "Austin"],
-
   ["Utah", "Salt Lake City"],
-
   ["Vermont", "Montpelier"],
-
   ["Virginia", "Richmond"],
-
   ["Washington", "Olympia"],
-
   ["West Virginia", "Charleston"],
-
   ["Wisconsin", "Madison"],
-
   ["Wyoming", "Cheyenne"]
 
 ];
 
-/* MAP DATA */
+
+/* =========================================
+   MAP DATA
+========================================= */
 
 let usaMap = null;
+
 
 try {
 
   const mapModule =
-
     await import(
-
       "https://cdn.jsdelivr.net/npm/@svg-maps/usa@2.0.0/+esm"
-
     );
 
+
   usaMap =
-
     mapModule.default ||
-
     mapModule;
+
 
 } catch (error) {
 
   console.log(
-
     "State outlines could not be loaded.",
-
     error
-
   );
 
 }
 
-/* SAVED STATE SELECTIONS */
+
+/* =========================================
+   LOAD STATE SELECTIONS
+========================================= */
 
 let selectedStates;
 
+
 let savedStateNames = null;
+
 
 try {
 
   savedStateNames =
-
     JSON.parse(
-
       localStorage.getItem(
-
         "stateCapitalSelections"
-
       )
-
     );
 
 } catch (error) {
@@ -2094,64 +1760,53 @@ try {
 
 }
 
+
 if (
-
   Array.isArray(savedStateNames) &&
-
   savedStateNames.length > 0
-
 ) {
 
   selectedStates =
-
     states.filter(
-
       function(state) {
 
         return savedStateNames.includes(
-
           state[0]
-
         );
 
       }
-
     );
 
 } else {
 
   selectedStates =
-
     [...states];
 
 }
 
-/* MISSED STATES */
+
+/* =========================================
+   LOAD MISSED
+========================================= */
 
 let missedStateNames = [];
+
 
 try {
 
   const savedMissed =
-
     JSON.parse(
-
       localStorage.getItem(
-
         "stateCapitalMissed"
-
       )
-
     );
 
+
   if (
-
     Array.isArray(savedMissed)
-
   ) {
 
     missedStateNames =
-
       savedMissed;
 
   }
@@ -2162,7 +1817,10 @@ try {
 
 }
 
-/* VARIABLES */
+
+/* =========================================
+   VARIABLES
+========================================= */
 
 let studyOrder = [];
 
@@ -2171,773 +1829,655 @@ let currentIndex = 0;
 let capitalVisible = false;
 
 let studyMode =
-
   "normal";
 
-/* ELEMENTS */
+
+/* =========================================
+   ELEMENTS
+========================================= */
 
 const homeScreen =
-
   document.getElementById(
-
     "homeScreen"
-
   );
+
 
 const studyScreen =
-
   document.getElementById(
-
     "studyScreen"
-
   );
+
 
 const selectionScreen =
-
   document.getElementById(
-
     "selectionScreen"
-
   );
+
+
+const missedListScreen =
+  document.getElementById(
+    "missedListScreen"
+  );
+
 
 const stateName =
-
   document.getElementById(
-
     "stateName"
-
   );
+
 
 const capitalName =
-
   document.getElementById(
-
     "capitalName"
-
   );
+
 
 const counter =
-
   document.getElementById(
-
     "counter"
-
   );
+
 
 const tapHint =
-
   document.getElementById(
-
     "tapHint"
-
   );
+
 
 const studyTapArea =
-
   document.getElementById(
-
     "studyTapArea"
-
   );
+
 
 const stateList =
-
   document.getElementById(
-
     "stateList"
-
   );
+
+
+const missedStateList =
+  document.getElementById(
+    "missedStateList"
+  );
+
 
 const selectedCount =
-
   document.getElementById(
-
     "selectedCount"
-
   );
+
 
 const missedCount =
-
   document.getElementById(
-
     "missedCount"
-
   );
+
 
 const reviewMissedTitle =
-
   document.getElementById(
-
     "reviewMissedTitle"
-
   );
+
 
 const reviewMissedCard =
-
   document.getElementById(
-
     "reviewMissedCard"
-
   );
+
+
+const viewMissedListCard =
+  document.getElementById(
+    "viewMissedListCard"
+  );
+
 
 const missedButton =
-
   document.getElementById(
-
     "missedButton"
-
   );
+
 
 const clearMissedButton =
-
   document.getElementById(
-
     "clearMissedButton"
-
   );
+
 
 const modeTitle =
-
   document.getElementById(
-
     "modeTitle"
-
   );
+
 
 const stateOutline =
-
   document.getElementById(
-
     "stateOutline"
-
   );
 
-/* SCREEN SWITCHING */
+
+const missedListSubtitle =
+  document.getElementById(
+    "missedListSubtitle"
+  );
+
+
+/* =========================================
+   SCREEN SWITCHING
+========================================= */
 
 function showScreen(screen) {
 
   document
-
     .querySelectorAll(
-
       ".screen"
-
     )
-
     .forEach(
-
       function(item) {
 
         item.classList.remove(
-
           "active"
-
         );
 
       }
-
     );
 
+
   screen.classList.add(
-
     "active"
-
   );
 
 }
 
-/* SHUFFLE */
+
+/* =========================================
+   SHUFFLE
+========================================= */
 
 function shuffle(array) {
 
   const copy =
-
     [...array];
 
+
   for (
-
     let i = copy.length - 1;
-
     i > 0;
-
     i--
-
   ) {
 
     const j =
-
       Math.floor(
-
         Math.random() *
-
         (i + 1)
-
       );
 
+
     [
-
       copy[i],
-
       copy[j]
-
     ] = [
-
       copy[j],
-
       copy[i]
-
     ];
 
   }
+
 
   return copy;
 
 }
 
-/* STATE OUTLINE */
+
+/* =========================================
+   STATE OUTLINE
+========================================= */
 
 function showStateOutline(
-
   state
-
 ) {
 
   stateOutline.innerHTML =
-
     "";
 
+
   if (
-
     !usaMap ||
-
     !Array.isArray(
-
       usaMap.locations
-
     )
-
   ) {
 
     return;
 
   }
 
+
   const location =
-
     usaMap.locations.find(
-
       function(item) {
 
         return (
-
           item.name.toLowerCase() ===
-
           state.toLowerCase()
-
         );
 
       }
-
     );
 
+
   if (
-
     !location
-
   ) {
 
     return;
 
   }
 
-  const svgNS =
 
+  const svgNS =
     "http://www.w3.org/2000/svg";
 
+
   const svg =
-
     document.createElementNS(
-
       svgNS,
-
       "svg"
-
     );
+
 
   const path =
-
     document.createElementNS(
-
       svgNS,
-
       "path"
-
     );
 
+
   path.setAttribute(
-
     "d",
-
     location.path
-
   );
+
 
   svg.appendChild(
-
     path
-
   );
+
 
   stateOutline.appendChild(
-
     svg
-
   );
 
-  requestAnimationFrame(
 
+  requestAnimationFrame(
     function() {
 
       try {
 
         const box =
-
           path.getBBox();
 
+
         const padding =
-
           Math.max(
-
             box.width,
-
             box.height
-
           ) * .10;
 
-        svg.setAttribute(
 
+        svg.setAttribute(
           "viewBox",
-
           [
-
             box.x - padding,
-
             box.y - padding,
-
             box.width +
-
               padding * 2,
-
             box.height +
-
               padding * 2
-
           ].join(" ")
-
         );
+
 
         svg.setAttribute(
-
           "preserveAspectRatio",
-
           "xMidYMid meet"
-
         );
+
 
       } catch (error) {
 
         console.log(
-
           "Could not size state outline."
-
         );
 
       }
 
     }
-
   );
 
 }
 
-/* COUNTS */
+
+/* =========================================
+   COUNTS
+========================================= */
 
 function updateSelectedCount() {
 
   selectedCount.textContent =
-
     selectedStates.length +
-
     " of 50 states selected";
 
 }
 
+
 function updateMissedCount() {
 
   const amount =
-
     missedStateNames.length;
 
+
   reviewMissedTitle.textContent =
-
     "Review Missed (" +
-
     amount +
-
     ")";
 
+
   if (
-
     amount === 1
-
   ) {
 
     missedCount.textContent =
-
       "1 missed capital saved";
 
   } else {
 
     missedCount.textContent =
-
       amount +
-
       " missed capitals saved";
 
   }
 
-  if (
 
+  reviewMissedCard.style.opacity =
     amount === 0
+      ? ".48"
+      : "1";
 
-  ) {
 
-    reviewMissedCard.style.opacity =
-
-      ".48";
-
-  } else {
-
-    reviewMissedCard.style.opacity =
-
-      "1";
-
-  }
+  viewMissedListCard.style.opacity =
+    amount === 0
+      ? ".65"
+      : "1";
 
 }
 
-/* SAVE */
+
+/* =========================================
+   SAVE
+========================================= */
 
 function saveSelectionsToStorage() {
 
   const names =
-
     selectedStates.map(
-
       function(state) {
 
         return state[0];
 
       }
-
     );
 
+
   localStorage.setItem(
-
     "stateCapitalSelections",
-
     JSON.stringify(
-
       names
-
     )
-
   );
 
 }
 
+
 function saveMissedToStorage() {
 
   localStorage.setItem(
-
     "stateCapitalMissed",
-
     JSON.stringify(
-
       missedStateNames
-
     )
-
   );
+
 
   updateMissedCount();
 
 }
 
-/* START STUDY */
+
+/* =========================================
+   START STUDY
+========================================= */
 
 function startStudy() {
 
   if (
-
     selectedStates.length === 0
-
   ) {
 
     alert(
-
       "Please select at least one state."
-
     );
 
     return;
 
   }
 
-  studyMode =
 
+  studyMode =
     "normal";
 
+
   studyOrder =
-
     shuffle(
-
       selectedStates
-
     );
 
-  currentIndex =
 
+  currentIndex =
     0;
 
-  capitalVisible =
 
+  capitalVisible =
     false;
 
+
   showScreen(
-
     studyScreen
-
   );
+
 
   displayState();
 
 }
 
-/* REVIEW MISSED */
+
+/* =========================================
+   REVIEW MISSED
+========================================= */
 
 function startMissedStudy() {
 
   if (
-
     missedStateNames.length === 0
-
   ) {
 
     alert(
-
       "You do not have any missed capitals yet."
-
     );
 
     return;
 
   }
 
+
   const missedStates =
-
     states.filter(
-
       function(state) {
 
         return missedStateNames.includes(
-
           state[0]
-
         );
 
       }
-
     );
+
 
   studyMode =
-
     "missed";
 
+
   studyOrder =
-
     shuffle(
-
       missedStates
-
     );
 
-  currentIndex =
 
+  currentIndex =
     0;
 
-  capitalVisible =
 
+  capitalVisible =
     false;
 
+
   showScreen(
-
     studyScreen
-
   );
+
 
   displayState();
 
 }
 
-/* DISPLAY STATE */
+
+/* =========================================
+   DISPLAY STATE
+========================================= */
 
 function displayState() {
 
   if (
-
     studyOrder.length === 0
-
   ) {
 
     return;
 
   }
 
+
   const item =
-
     studyOrder[
-
       currentIndex
-
     ];
 
-  stateName.textContent =
 
+  stateName.textContent =
     item[0];
 
+
   showStateOutline(
-
     item[0]
-
   );
 
+
   counter.textContent =
-
     (currentIndex + 1) +
-
     " of " +
-
     studyOrder.length;
 
+
   if (
-
     studyMode ===
-
     "missed"
-
   ) {
 
     modeTitle.textContent =
-
       "REVIEWING MISSED";
 
+
     clearMissedButton
-
       .classList.add(
-
         "visible"
-
       );
 
   } else {
 
     modeTitle.textContent =
-
       "";
 
+
     clearMissedButton
-
       .classList.remove(
-
         "visible"
-
       );
 
   }
 
+
   if (
-
     capitalVisible
-
   ) {
 
     capitalName.textContent =
-
       item[1];
 
+
     missedButton
-
       .classList.add(
-
         "visible"
-
       );
 
+
     if (
-
       missedStateNames.includes(
-
         item[0]
-
       )
-
     ) {
 
       missedButton.textContent =
-
         "Missed ✓";
 
+
       missedButton
-
         .classList.add(
-
           "already-missed"
-
         );
 
     } else {
 
       missedButton.textContent =
-
         "Missed";
 
+
       missedButton
-
         .classList.remove(
-
           "already-missed"
-
         );
 
     }
 
+
     if (
-
       currentIndex <
-
       studyOrder.length - 1
-
     ) {
 
       tapHint.textContent =
-
         "Tap for next state";
 
     } else {
 
       tapHint.textContent =
-
         "End of round";
 
     }
@@ -2945,142 +2485,123 @@ function displayState() {
   } else {
 
     capitalName.textContent =
-
       "";
 
-    tapHint.textContent =
 
+    tapHint.textContent =
       "Tap to reveal capital";
 
+
     missedButton
-
       .classList.remove(
-
         "visible"
-
       );
 
   }
 
+
   document
-
     .getElementById(
-
       "previousButton"
-
     )
-
     .disabled =
-
       currentIndex === 0;
 
+
   document
-
     .getElementById(
-
       "nextButton"
-
     )
-
     .disabled =
-
       currentIndex ===
-
       studyOrder.length - 1;
 
 }
 
-/* MARK MISSED */
+
+/* =========================================
+   MARK MISSED
+========================================= */
 
 function markMissed() {
 
   if (
-
     !capitalVisible ||
-
     studyOrder.length === 0
-
   ) {
 
     return;
 
   }
 
+
   const currentState =
-
     studyOrder[
-
       currentIndex
-
     ][0];
 
+
   if (
-
     !missedStateNames.includes(
-
       currentState
-
     )
-
   ) {
 
     missedStateNames.push(
-
       currentState
-
     );
+
 
     saveMissedToStorage();
 
   }
 
-  missedButton.textContent =
 
+  missedButton.textContent =
     "Missed ✓";
 
+
   missedButton
-
     .classList.add(
-
       "already-missed"
-
     );
 
 }
 
-/* TAP */
+
+/* =========================================
+   TAP
+========================================= */
 
 function handleStudyTap() {
 
   if (
-
     !capitalVisible
-
   ) {
 
     capitalVisible =
-
       true;
 
+
     displayState();
+
 
     return;
 
   }
 
+
   if (
-
     currentIndex <
-
     studyOrder.length - 1
-
   ) {
 
     currentIndex++;
 
-    capitalVisible =
 
+    capitalVisible =
       false;
+
 
     displayState();
 
@@ -3088,22 +2609,21 @@ function handleStudyTap() {
 
 }
 
-/* NEXT */
+
+/* =========================================
+   NEXT / PREVIOUS
+========================================= */
 
 function nextState() {
 
   if (
-
     currentIndex <
-
     studyOrder.length - 1
-
   ) {
 
     currentIndex++;
 
     capitalVisible =
-
       false;
 
     displayState();
@@ -3112,20 +2632,16 @@ function nextState() {
 
 }
 
-/* PREVIOUS */
 
 function previousState() {
 
   if (
-
     currentIndex > 0
-
   ) {
 
     currentIndex--;
 
     capitalVisible =
-
       false;
 
     displayState();
@@ -3134,503 +2650,688 @@ function previousState() {
 
 }
 
-/* CLEAR MISSED */
+
+/* =========================================
+   CLEAR MISSED
+========================================= */
 
 function clearMissedList() {
 
   if (
-
     missedStateNames.length === 0
-
   ) {
 
     return;
 
   }
+
 
   const shouldClear =
-
     confirm(
-
       "Clear your entire missed capitals list?"
-
     );
 
+
   if (
-
     !shouldClear
-
   ) {
 
     return;
 
   }
 
-  missedStateNames =
 
+  missedStateNames =
     [];
+
 
   saveMissedToStorage();
 
-  studyOrder =
 
-    [];
+  buildMissedList();
 
-  currentIndex =
-
-    0;
-
-  capitalVisible =
-
-    false;
 
   showScreen(
-
     homeScreen
-
   );
 
 }
 
-/* BUILD STATE SELECTION */
+
+/* =========================================
+   REMOVE ONE MISSED STATE
+========================================= */
+
+function removeMissedState(
+  stateNameToRemove
+) {
+
+  missedStateNames =
+    missedStateNames.filter(
+      function(name) {
+
+        return (
+          name !==
+          stateNameToRemove
+        );
+
+      }
+    );
+
+
+  saveMissedToStorage();
+
+
+  buildMissedList();
+
+}
+
+
+/* =========================================
+   BUILD MISSED LIST
+========================================= */
+
+function buildMissedList() {
+
+  missedStateList.innerHTML =
+    "";
+
+
+  const amount =
+    missedStateNames.length;
+
+
+  missedListSubtitle.textContent =
+    amount === 1
+      ? "1 state is currently in your missed list."
+      : amount +
+        " states are currently in your missed list.";
+
+
+  if (
+    amount === 0
+  ) {
+
+    const empty =
+      document.createElement(
+        "div"
+      );
+
+
+    empty.className =
+      "empty-missed";
+
+
+    empty.innerHTML =
+      "<strong>No missed states.</strong><br>You can add one by tapping “Missed” after revealing a capital.";
+
+
+    missedStateList.appendChild(
+      empty
+    );
+
+
+    return;
+
+  }
+
+
+  const missedItems =
+    states.filter(
+      function(state) {
+
+        return missedStateNames.includes(
+          state[0]
+        );
+
+      }
+    );
+
+
+  missedItems.forEach(
+    function(item) {
+
+
+      const row =
+        document.createElement(
+          "div"
+        );
+
+
+      row.className =
+        "missed-state-row";
+
+
+      const info =
+        document.createElement(
+          "div"
+        );
+
+
+      info.className =
+        "missed-state-info";
+
+
+      const name =
+        document.createElement(
+          "div"
+        );
+
+
+      name.className =
+        "missed-state-name";
+
+
+      name.textContent =
+        item[0];
+
+
+      const capital =
+        document.createElement(
+          "div"
+        );
+
+
+      capital.className =
+        "missed-capital-name";
+
+
+      capital.textContent =
+        "Capital: " +
+        item[1];
+
+
+      const removeButton =
+        document.createElement(
+          "button"
+        );
+
+
+      removeButton.className =
+        "remove-missed-button";
+
+
+      removeButton.textContent =
+        "Remove";
+
+
+      removeButton.addEventListener(
+        "click",
+        function() {
+
+          removeMissedState(
+            item[0]
+          );
+
+        }
+      );
+
+
+      info.appendChild(
+        name
+      );
+
+
+      info.appendChild(
+        capital
+      );
+
+
+      row.appendChild(
+        info
+      );
+
+
+      row.appendChild(
+        removeButton
+      );
+
+
+      missedStateList.appendChild(
+        row
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   BUILD STATE SELECTION
+========================================= */
 
 function buildStateSelection() {
 
   stateList.innerHTML =
-
     "";
 
+
   states.forEach(
-
     function(
-
       item,
-
       index
-
     ) {
 
+
       const label =
-
         document.createElement(
-
           "label"
-
         );
+
 
       label.className =
-
         "state-option";
 
+
       const checkbox =
-
         document.createElement(
-
           "input"
-
         );
 
-      checkbox.type =
 
+      checkbox.type =
         "checkbox";
 
-      checkbox.dataset.index =
 
+      checkbox.dataset.index =
         index;
 
+
       checkbox.checked =
-
         selectedStates.some(
-
           function(state) {
 
             return (
-
               state[0] ===
-
               item[0]
-
             );
 
           }
-
         );
+
 
       const text =
-
         document.createElement(
-
           "span"
-
         );
 
-      text.textContent =
 
+      text.textContent =
         item[0];
 
-      label.appendChild(
 
+      label.appendChild(
         checkbox
-
       );
+
 
       label.appendChild(
-
         text
-
       );
+
 
       stateList.appendChild(
-
         label
-
       );
 
     }
-
   );
 
 }
 
-/* SAVE SELECTION */
+
+/* =========================================
+   SAVE SELECTION
+========================================= */
 
 function saveSelection() {
 
   const checkboxes =
-
     stateList.querySelectorAll(
-
       "input[type='checkbox']"
-
     );
 
-  const newSelection =
 
+  const newSelection =
     [];
 
-  checkboxes.forEach(
 
+  checkboxes.forEach(
     function(box) {
 
       if (
-
         box.checked
-
       ) {
 
         newSelection.push(
-
           states[
-
             Number(
-
               box.dataset.index
-
             )
-
           ]
-
         );
 
       }
 
     }
-
   );
 
+
   if (
-
     newSelection.length === 0
-
   ) {
 
     alert(
-
       "Please select at least one state."
-
     );
 
     return;
 
   }
 
-  selectedStates =
 
+  selectedStates =
     newSelection;
+
 
   saveSelectionsToStorage();
 
+
   updateSelectedCount();
 
+
   showScreen(
-
     homeScreen
-
   );
 
 }
 
-/* EVENTS */
+
+/* =========================================
+   EVENTS
+========================================= */
 
 document
-
   .getElementById(
-
     "startArea"
-
   )
-
   .addEventListener(
-
     "click",
-
     startStudy
-
   );
 
+
 document
-
   .getElementById(
-
     "chooseStates"
-
   )
-
   .addEventListener(
-
     "click",
-
     function() {
 
       buildStateSelection();
 
+
       showScreen(
-
         selectionScreen
-
       );
 
     }
-
   );
+
 
 reviewMissedCard
-
   .addEventListener(
-
     "click",
-
     startMissedStudy
-
   );
+
+
+viewMissedListCard
+  .addEventListener(
+    "click",
+    function() {
+
+      buildMissedList();
+
+
+      showScreen(
+        missedListScreen
+      );
+
+    }
+  );
+
 
 studyTapArea
-
   .addEventListener(
-
     "click",
-
     handleStudyTap
-
   );
 
+
 missedButton
-
   .addEventListener(
-
     "click",
-
     function(event) {
 
       event.stopPropagation();
+
 
       markMissed();
 
     }
-
   );
 
+
 document
-
   .getElementById(
-
     "nextButton"
-
   )
-
   .addEventListener(
-
     "click",
-
     function(event) {
 
       event.stopPropagation();
+
 
       nextState();
 
     }
-
   );
 
+
 document
-
   .getElementById(
-
     "previousButton"
-
   )
-
   .addEventListener(
-
     "click",
-
     function(event) {
 
       event.stopPropagation();
+
 
       previousState();
 
     }
-
   );
 
+
 document
-
   .getElementById(
-
     "homeButton"
-
   )
-
   .addEventListener(
-
     "click",
-
     function(event) {
 
       event.stopPropagation();
+
 
       updateMissedCount();
 
+
       showScreen(
-
         homeScreen
-
       );
 
     }
-
   );
 
+
 clearMissedButton
-
   .addEventListener(
-
     "click",
-
     function(event) {
 
       event.stopPropagation();
+
 
       clearMissedList();
 
     }
-
   );
 
+
 document
-
   .getElementById(
-
     "selectAll"
-
   )
-
   .addEventListener(
-
     "click",
-
     function() {
 
       stateList
-
         .querySelectorAll(
-
           "input"
-
         )
-
         .forEach(
-
           function(box) {
 
             box.checked =
-
               true;
 
           }
-
         );
 
     }
-
   );
 
+
 document
-
   .getElementById(
-
     "clearAll"
-
   )
-
   .addEventListener(
-
     "click",
-
     function() {
 
       stateList
-
         .querySelectorAll(
-
           "input"
-
         )
-
         .forEach(
-
           function(box) {
 
             box.checked =
-
               false;
 
           }
-
         );
 
     }
-
   );
+
 
 document
-
   .getElementById(
-
     "doneSelection"
-
   )
-
   .addEventListener(
-
     "click",
-
     saveSelection
-
   );
 
-/* INITIALIZE */
+
+document
+  .getElementById(
+    "missedListDone"
+  )
+  .addEventListener(
+    "click",
+    function() {
+
+      updateMissedCount();
+
+
+      showScreen(
+        homeScreen
+      );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "reviewFromList"
+  )
+  .addEventListener(
+    "click",
+    startMissedStudy
+  );
+
+
+document
+  .getElementById(
+    "clearMissedFromList"
+  )
+  .addEventListener(
+    "click",
+    function() {
+
+      if (
+        missedStateNames.length === 0
+      ) {
+
+        return;
+
+      }
+
+
+      const shouldClear =
+        confirm(
+          "Clear your entire missed capitals list?"
+        );
+
+
+      if (
+        !shouldClear
+      ) {
+
+        return;
+
+      }
+
+
+      missedStateNames =
+        [];
+
+
+      saveMissedToStorage();
+
+
+      buildMissedList();
+
+    }
+  );
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
 
 updateSelectedCount();
 
@@ -3639,5 +3340,4 @@ updateMissedCount();
 </script>
 
 </body>
-
 </html>
