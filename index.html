@@ -45,14 +45,8 @@ button {
   cursor: pointer;
 }
 
-
-/* -------------------- */
-/* SCREENS              */
-/* -------------------- */
-
 .screen {
   display: none;
-
   width: 100%;
   height: 100%;
 
@@ -66,41 +60,34 @@ button {
   display: flex;
 }
 
-
-/* -------------------- */
-/* HOME SCREEN          */
-/* -------------------- */
+/* HOME */
 
 #homeScreen {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   text-align: center;
 }
 
 .home-title {
   font-size: 38px;
   font-weight: 800;
-
-  margin-bottom: 40px;
+  margin-bottom: 38px;
 }
 
 .tap-start {
-  font-size: 27px;
-  font-weight: 650;
-
-  padding: 35px;
-
   width: 100%;
   max-width: 500px;
+  padding: 35px;
+
+  font-size: 27px;
+  font-weight: 650;
 
   cursor: pointer;
 }
 
 .choose-button {
-  margin-top: 30px;
-
+  margin-top: 28px;
   padding: 15px 26px;
 
   border: none;
@@ -116,44 +103,31 @@ button {
 
 .selected-count {
   margin-top: 14px;
-
   font-size: 15px;
   color: #666;
 }
 
-
-/* -------------------- */
-/* STUDY SCREEN         */
-/* -------------------- */
+/* STUDY */
 
 #studyScreen {
   flex-direction: column;
-
   align-items: center;
-
-  position: relative;
 }
 
 .counter {
   width: 100%;
-
   text-align: center;
 
-  font-size: 18px;
-
-  color: #666;
-
   padding-top: 10px;
+
+  font-size: 18px;
+  color: #666;
 
   pointer-events: none;
 }
 
-
-/* This is the large tappable area */
-
 .study-tap-area {
   flex: 1;
-
   width: 100%;
 
   display: flex;
@@ -168,24 +142,19 @@ button {
 }
 
 .state-name {
+  padding: 0 10px;
+
   font-size: clamp(40px, 11vw, 68px);
-
   font-weight: 800;
-
   line-height: 1.1;
-
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .capital-name {
-  font-size: clamp(30px, 8vw, 48px);
-
-  font-weight: 500;
-
+  min-height: 60px;
   margin-top: 25px;
 
-  min-height: 60px;
+  font-size: clamp(30px, 8vw, 48px);
+  font-weight: 500;
 
   color: #555;
 }
@@ -194,14 +163,10 @@ button {
   margin-top: 30px;
 
   font-size: 15px;
-
   color: #999;
 }
 
-
-/* -------------------- */
-/* NAVIGATION BUTTONS   */
-/* -------------------- */
+/* BUTTONS */
 
 .nav {
   width: 100%;
@@ -211,21 +176,18 @@ button {
 }
 
 .nav-row {
-  width: 100%;
-
   display: flex;
-
   gap: 12px;
+  width: 100%;
 }
 
 .nav button {
-  border: none;
+  padding: 16px 8px;
 
+  border: none;
   border-radius: 14px;
 
   background: white;
-
-  padding: 16px 8px;
 
   font-size: 17px;
   font-weight: 650;
@@ -239,7 +201,6 @@ button {
 
 .home-button {
   width: 100%;
-
   margin-top: 12px;
 
   background: #e3e3e8 !important;
@@ -249,41 +210,35 @@ button {
   opacity: .35;
 }
 
-
-/* -------------------- */
-/* CHOOSE STATES SCREEN */
-/* -------------------- */
+/* CHOOSE STATES */
 
 #selectionScreen {
   flex-direction: column;
 
   overflow-y: auto;
-
   -webkit-overflow-scrolling: touch;
 }
 
 .selection-header {
   position: sticky;
-
   top: 0;
+
+  z-index: 10;
 
   background: #f4f4f7;
 
   padding-bottom: 12px;
-
-  z-index: 10;
 }
 
 .selection-title {
+  margin: 0 0 16px;
+
   font-size: 30px;
   font-weight: 800;
-
-  margin: 0 0 16px;
 }
 
 .selection-actions {
   display: flex;
-
   gap: 10px;
 }
 
@@ -303,7 +258,6 @@ button {
 
 .state-list {
   display: grid;
-
   grid-template-columns: 1fr;
 
   gap: 8px;
@@ -312,17 +266,16 @@ button {
 }
 
 .state-option {
-  background: white;
-
-  border-radius: 12px;
-
-  padding: 15px;
-
   display: flex;
-
   align-items: center;
 
   gap: 14px;
+
+  padding: 15px;
+
+  background: white;
+
+  border-radius: 12px;
 
   font-size: 18px;
 }
@@ -345,18 +298,14 @@ button {
   border: none;
   border-radius: 14px;
 
+  background: #111;
+  color: white;
+
   font-size: 18px;
   font-weight: 700;
-
-  background: #111;
-
-  color: white;
 }
 
-
-/* -------------------- */
-/* PORTRAIT ONLY        */
-/* -------------------- */
+/* PORTRAIT */
 
 @media (orientation: landscape) {
 
@@ -364,10 +313,7 @@ button {
     content: "Please rotate your phone to portrait mode.";
 
     position: fixed;
-
     inset: 0;
-
-    background: #f4f4f7;
 
     z-index: 99999;
 
@@ -378,24 +324,21 @@ button {
 
     padding: 40px;
 
+    background: #f4f4f7;
+
     text-align: center;
 
     font-size: 24px;
     font-weight: 700;
   }
-
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ================================= -->
-<!-- HOME SCREEN                       -->
-<!-- ================================= -->
+<!-- HOME SCREEN -->
 
 <div id="homeScreen" class="screen active">
 
@@ -403,7 +346,10 @@ button {
     U.S. State Capitals
   </div>
 
-  <div class="tap-start" id="startArea">
+  <div
+    class="tap-start"
+    id="startArea"
+  >
     Tap to Start
   </div>
 
@@ -422,10 +368,7 @@ button {
 </div>
 
 
-
-<!-- ================================= -->
-<!-- STUDY SCREEN                      -->
-<!-- ================================= -->
+<!-- STUDY SCREEN -->
 
 <div id="studyScreen" class="screen">
 
@@ -433,14 +376,6 @@ button {
     class="counter"
     id="counter"
   ></div>
-
-
-  <!--
-       TAP THIS AREA:
-
-       First tap = reveal capital
-       Second tap = next state
-  -->
 
   <div
     class="study-tap-area"
@@ -452,12 +387,10 @@ button {
       id="stateName"
     ></div>
 
-
     <div
       class="capital-name"
       id="capitalName"
     ></div>
-
 
     <div
       class="tap-hint"
@@ -467,10 +400,6 @@ button {
     </div>
 
   </div>
-
-
-
-  <!-- BUTTONS ONLY APPEAR AFTER START -->
 
   <div class="nav">
 
@@ -486,7 +415,6 @@ button {
 
     </div>
 
-
     <button
       class="home-button"
       id="homeButton"
@@ -499,20 +427,15 @@ button {
 </div>
 
 
-
-<!-- ================================= -->
-<!-- CHOOSE STATES SCREEN              -->
-<!-- ================================= -->
+<!-- CHOOSE STATES SCREEN -->
 
 <div id="selectionScreen" class="screen">
-
 
   <div class="selection-header">
 
     <div class="selection-title">
       Choose States
     </div>
-
 
     <div class="selection-actions">
 
@@ -528,12 +451,10 @@ button {
 
   </div>
 
-
   <div
     class="state-list"
     id="stateList"
   ></div>
-
 
   <button
     class="done-button"
@@ -542,19 +463,14 @@ button {
     Done
   </button>
 
-
 </div>
-
 
 
 <script>
 
-/* ================================= */
-/* STATES AND CAPITALS               */
-/* ================================= */
+/* STATES + CAPITALS */
 
 const states = [
-
   ["Alabama", "Montgomery"],
   ["Alaska", "Juneau"],
   ["Arizona", "Phoenix"],
@@ -605,14 +521,10 @@ const states = [
   ["West Virginia", "Charleston"],
   ["Wisconsin", "Madison"],
   ["Wyoming", "Cheyenne"]
-
 ];
 
 
-
-/* ================================= */
-/* VARIABLES                         */
-/* ================================= */
+/* VARIABLES */
 
 let selectedStates = [...states];
 
@@ -623,10 +535,7 @@ let currentIndex = 0;
 let capitalVisible = false;
 
 
-
-/* ================================= */
-/* ELEMENTS                          */
-/* ================================= */
+/* ELEMENTS */
 
 const homeScreen =
   document.getElementById("homeScreen");
@@ -636,7 +545,6 @@ const studyScreen =
 
 const selectionScreen =
   document.getElementById("selectionScreen");
-
 
 const stateName =
   document.getElementById("stateName");
@@ -653,7 +561,6 @@ const tapHint =
 const studyTapArea =
   document.getElementById("studyTapArea");
 
-
 const stateList =
   document.getElementById("stateList");
 
@@ -661,10 +568,7 @@ const selectedCount =
   document.getElementById("selectedCount");
 
 
-
-/* ================================= */
-/* SHOW SCREEN                       */
-/* ================================= */
+/* SWITCH SCREENS */
 
 function showScreen(screen) {
 
@@ -676,21 +580,15 @@ function showScreen(screen) {
 
     });
 
-
   screen.classList.add("active");
-
 }
 
 
-
-/* ================================= */
-/* RANDOMIZE STATES                  */
-/* ================================= */
+/* RANDOMIZE */
 
 function shuffle(array) {
 
   const copy = [...array];
-
 
   for (
     let i = copy.length - 1;
@@ -703,7 +601,6 @@ function shuffle(array) {
         Math.random() * (i + 1)
       );
 
-
     [
       copy[i],
       copy[j]
@@ -714,30 +611,21 @@ function shuffle(array) {
 
   }
 
-
   return copy;
-
 }
 
 
-
-/* ================================= */
-/* SELECTED STATE COUNT              */
-/* ================================= */
+/* UPDATE SELECTED COUNT */
 
 function updateSelectedCount() {
 
   selectedCount.textContent =
     selectedStates.length +
     " of 50 states selected";
-
 }
 
 
-
-/* ================================= */
-/* START STUDY                       */
-/* ================================= */
+/* START */
 
 function startStudy() {
 
@@ -748,31 +636,22 @@ function startStudy() {
     );
 
     return;
-
   }
-
 
   studyOrder =
     shuffle(selectedStates);
-
 
   currentIndex = 0;
 
   capitalVisible = false;
 
-
   showScreen(studyScreen);
 
-
   displayState();
-
 }
 
 
-
-/* ================================= */
-/* DISPLAY CURRENT STATE             */
-/* ================================= */
+/* DISPLAY STATE */
 
 function displayState() {
 
@@ -780,28 +659,33 @@ function displayState() {
     return;
   }
 
-
   const item =
     studyOrder[currentIndex];
 
-
   stateName.textContent =
     item[0];
-
 
   if (capitalVisible) {
 
     capitalName.textContent =
       item[1];
 
-    tapHint.textContent =
-      currentIndex === studyOrder.length - 1
-        ? "Tap to finish"
-        : "Tap for next state";
+    if (
+      currentIndex <
+      studyOrder.length - 1
+    ) {
 
-  }
+      tapHint.textContent =
+        "Tap for next state";
 
-  else {
+    } else {
+
+      tapHint.textContent =
+        "End of round";
+
+    }
+
+  } else {
 
     capitalName.textContent = "";
 
@@ -810,38 +694,33 @@ function displayState() {
 
   }
 
-
   counter.textContent =
     (currentIndex + 1) +
     " of " +
     studyOrder.length;
-
 
   document
     .getElementById("previousButton")
     .disabled =
       currentIndex === 0;
 
-
   document
     .getElementById("nextButton")
     .disabled =
       currentIndex ===
       studyOrder.length - 1;
-
 }
 
 
-
-/* ================================= */
-/* MAIN TAP BEHAVIOR                 */
-/* ================================= */
+/* MAIN SCREEN TAP */
 
 function handleStudyTap() {
 
   /*
-     FIRST TAP:
-     reveal capital
+    STATE IS SHOWING WITHOUT CAPITAL
+
+    Tap once:
+    reveal the capital.
   */
 
   if (!capitalVisible) {
@@ -851,13 +730,14 @@ function handleStudyTap() {
     displayState();
 
     return;
-
   }
 
 
   /*
-     SECOND TAP:
-     move to next state
+    CAPITAL IS ALREADY SHOWING
+
+    Tap again:
+    go directly to the next state.
   */
 
   if (
@@ -873,25 +753,10 @@ function handleStudyTap() {
 
   }
 
-  else {
-
-    /*
-       If you're on the final state
-       and tap after revealing it,
-       return to Home.
-    */
-
-    showScreen(homeScreen);
-
-  }
-
 }
 
 
-
-/* ================================= */
-/* NEXT BUTTON                       */
-/* ================================= */
+/* NEXT BUTTON */
 
 function nextState() {
 
@@ -905,16 +770,11 @@ function nextState() {
     capitalVisible = false;
 
     displayState();
-
   }
-
 }
 
 
-
-/* ================================= */
-/* PREVIOUS BUTTON                   */
-/* ================================= */
+/* PREVIOUS BUTTON */
 
 function previousState() {
 
@@ -925,21 +785,15 @@ function previousState() {
     capitalVisible = false;
 
     displayState();
-
   }
-
 }
 
 
-
-/* ================================= */
-/* BUILD STATE SELECTION LIST        */
-/* ================================= */
+/* BUILD CHOOSE-STATES LIST */
 
 function buildStateSelection() {
 
   stateList.innerHTML = "";
-
 
   states.forEach(
     function(item, index) {
@@ -947,22 +801,17 @@ function buildStateSelection() {
       const label =
         document.createElement("label");
 
-
       label.className =
         "state-option";
-
 
       const checkbox =
         document.createElement("input");
 
-
       checkbox.type =
         "checkbox";
 
-
       checkbox.dataset.index =
         index;
-
 
       checkbox.checked =
         selectedStates.some(
@@ -975,39 +824,29 @@ function buildStateSelection() {
           }
         );
 
-
       const text =
         document.createElement("span");
 
-
       text.textContent =
         item[0];
-
 
       label.appendChild(
         checkbox
       );
 
-
       label.appendChild(
         text
       );
 
-
       stateList.appendChild(
         label
       );
-
     }
   );
-
 }
 
 
-
-/* ================================= */
-/* SAVE STATE SELECTION              */
-/* ================================= */
+/* SAVE SELECTED STATES */
 
 function saveSelection() {
 
@@ -1016,9 +855,7 @@ function saveSelection() {
       "input[type='checkbox']"
     );
 
-
   const newSelection = [];
-
 
   checkboxes.forEach(
     function(box) {
@@ -1032,12 +869,9 @@ function saveSelection() {
             )
           ]
         );
-
       }
-
     }
   );
-
 
   if (
     newSelection.length === 0
@@ -1048,26 +882,18 @@ function saveSelection() {
     );
 
     return;
-
   }
-
 
   selectedStates =
     newSelection;
 
-
   updateSelectedCount();
 
-
   showScreen(homeScreen);
-
 }
 
 
-
-/* ================================= */
-/* START                             */
-/* ================================= */
+/* START BUTTON */
 
 document
   .getElementById("startArea")
@@ -1077,10 +903,7 @@ document
   );
 
 
-
-/* ================================= */
-/* TAP STUDY SCREEN                  */
-/* ================================= */
+/* MAIN STUDY TAP */
 
 studyTapArea
   .addEventListener(
@@ -1089,10 +912,7 @@ studyTapArea
   );
 
 
-
-/* ================================= */
-/* NAVIGATION BUTTONS                */
-/* ================================= */
+/* NEXT */
 
 document
   .getElementById("nextButton")
@@ -1103,10 +923,11 @@ document
       event.stopPropagation();
 
       nextState();
-
     }
   );
 
+
+/* PREVIOUS */
 
 document
   .getElementById("previousButton")
@@ -1117,10 +938,11 @@ document
       event.stopPropagation();
 
       previousState();
-
     }
   );
 
+
+/* HOME */
 
 document
   .getElementById("homeButton")
@@ -1133,15 +955,11 @@ document
       showScreen(
         homeScreen
       );
-
     }
   );
 
 
-
-/* ================================= */
-/* CHOOSE STATES                     */
-/* ================================= */
+/* CHOOSE STATES */
 
 document
   .getElementById("chooseStates")
@@ -1156,15 +974,11 @@ document
       showScreen(
         selectionScreen
       );
-
     }
   );
 
 
-
-/* ================================= */
-/* SELECT ALL                        */
-/* ================================= */
+/* SELECT ALL */
 
 document
   .getElementById("selectAll")
@@ -1173,25 +987,18 @@ document
     function() {
 
       stateList
-        .querySelectorAll(
-          "input"
-        )
+        .querySelectorAll("input")
         .forEach(
           function(box) {
 
             box.checked = true;
-
           }
         );
-
     }
   );
 
 
-
-/* ================================= */
-/* CLEAR ALL                         */
-/* ================================= */
+/* CLEAR ALL */
 
 document
   .getElementById("clearAll")
@@ -1200,25 +1007,18 @@ document
     function() {
 
       stateList
-        .querySelectorAll(
-          "input"
-        )
+        .querySelectorAll("input")
         .forEach(
           function(box) {
 
             box.checked = false;
-
           }
         );
-
     }
   );
 
 
-
-/* ================================= */
-/* DONE CHOOSING STATES              */
-/* ================================= */
+/* DONE */
 
 document
   .getElementById("doneSelection")
@@ -1228,10 +1028,7 @@ document
   );
 
 
-
-/* ================================= */
-/* INITIALIZE                        */
-/* ================================= */
+/* INITIALIZE */
 
 updateSelectedCount();
 
