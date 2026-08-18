@@ -24,21 +24,24 @@
 
   --background: #f7f9fd;
 
-  --navy: #081f5c;
-  --blue: #075adf;
+  --navy: #0b225a;
+  --navy-dark: #06163c;
+
+  --blue: #0a62e8;
+  --blue-2: #2f81f7;
   --blue-light: #eaf2ff;
 
-  --red: #ef3434;
-  --red-light: #fff0f0;
+  --red: #ef3d43;
+  --red-light: #fff0f1;
 
   --text: #0b1838;
-  --gray: #657086;
-  --light-gray: #a4abba;
+  --gray: #667086;
+  --light-gray: #a7afbd;
 
   --white: #ffffff;
 
-  --blue-border: #1765e8;
-  --red-border: #ef4545;
+  --blue-border: #2d6fe8;
+  --red-border: #ee5156;
 
 }
 
@@ -63,8 +66,11 @@ body {
   overflow: hidden;
 
   font-family:
+    "Avenir Next",
+    Avenir,
     -apple-system,
     BlinkMacSystemFont,
+    "SF Pro Display",
     "Segoe UI",
     sans-serif;
 
@@ -72,7 +78,7 @@ body {
     linear-gradient(
       180deg,
       #fbfdff 0%,
-      #f5f8fd 50%,
+      #f5f8fd 45%,
       #f7f9fc 100%
     );
 
@@ -120,6 +126,8 @@ button {
 
 #homeScreen {
 
+  position: relative;
+
   flex-direction: column;
 
   align-items: center;
@@ -130,7 +138,102 @@ button {
   overflow-y: auto;
 }
 
+.home-decoration {
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  opacity: .9;
+}
+
+.star {
+
+  position: absolute;
+
+  color: #cfe0ff;
+
+  font-size: 22px;
+}
+
+.star.one {
+  top: 12%;
+  left: 15%;
+}
+
+.star.two {
+  top: 19%;
+  right: 16%;
+  font-size: 17px;
+}
+
+.star.three {
+  top: 31%;
+  left: 9%;
+  font-size: 13px;
+}
+
+.star.four {
+  top: 26%;
+  right: 9%;
+  font-size: 12px;
+}
+
+.flag-stripes {
+
+  position: absolute;
+
+  width: 250px;
+  height: 180px;
+
+  left: -90px;
+  bottom: 3%;
+
+  transform: rotate(-12deg);
+
+  border-radius: 50%;
+
+  opacity: .12;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      var(--red) 0px,
+      var(--red) 12px,
+      transparent 12px,
+      transparent 25px
+    );
+}
+
+.blue-glow {
+
+  position: absolute;
+
+  width: 330px;
+  height: 330px;
+
+  top: -150px;
+  right: -150px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(35,117,255,.13),
+      rgba(35,117,255,0) 68%
+    );
+}
+
 .home-content {
+
+  position: relative;
+
+  z-index: 2;
 
   width: 100%;
   max-width: 430px;
@@ -142,59 +245,74 @@ button {
 }
 
 
-/* SMALL ICON */
+/* LOGO */
 
 .logo-circle {
 
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
 
   border: 2px solid var(--blue-border);
 
-  border-radius: 50%;
+  border-radius: 24px;
 
-  background: white;
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #edf4ff
+    );
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 
   box-shadow:
-    0 7px 20px rgba(20,70,150,.10);
+    0 9px 22px rgba(20,70,150,.14);
 }
 
-.logo-star {
+.logo-inner {
 
-  width: 38px;
-  height: 38px;
+  position: relative;
 
-  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+
+  border-radius: 15px;
+
+  overflow: hidden;
 
   background:
-    linear-gradient(
-      180deg,
-      var(--blue) 0%,
-      var(--blue) 47%,
-      white 47%,
-      white 58%,
-      var(--red) 58%,
-      var(--red) 72%,
-      white 72%,
-      white 82%,
-      var(--red) 82%
+    repeating-linear-gradient(
+      0deg,
+      var(--red) 0px,
+      var(--red) 5px,
+      white 5px,
+      white 10px
     );
+}
+
+.logo-blue {
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 55%;
+  height: 55%;
+
+  background: var(--blue);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   color: white;
 
-  font-size: 22px;
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-
-  padding-top: 3px;
+  font-size: 17px;
 }
 
 
@@ -206,25 +324,27 @@ button {
 
   color: var(--navy);
 
-  font-size: clamp(44px, 12vw, 60px);
+  font-size: clamp(43px, 11.5vw, 59px);
 
   font-weight: 900;
 
-  line-height: .96;
+  line-height: .98;
 
-  letter-spacing: -2.3px;
+  letter-spacing: -2.1px;
 }
 
 .home-subtitle {
 
-  margin-top: 20px;
-  margin-bottom: 35px;
+  margin-top: 18px;
+  margin-bottom: 34px;
 
   color: var(--gray);
 
   font-size: 17px;
 
   line-height: 1.45;
+
+  font-weight: 500;
 }
 
 
@@ -236,26 +356,28 @@ button {
 
   min-height: 72px;
 
-  border: 2px solid #0052ce;
+  border: 2px solid #0049b9;
 
-  border-radius: 20px;
+  border-radius: 21px;
 
   background:
     linear-gradient(
       180deg,
-      #1169ed,
-      #0649bd
+      #1673f2,
+      #074cb9
     );
 
   color: white;
 
-  font-size: 24px;
+  font-size: 23px;
   font-weight: 800;
 
-  box-shadow:
-    0 10px 22px rgba(0,72,190,.20);
+  letter-spacing: -.4px;
 
-  margin-bottom: 20px;
+  box-shadow:
+    0 12px 25px rgba(0,72,190,.22);
+
+  margin-bottom: 18px;
 }
 
 .start-button:active {
@@ -271,13 +393,18 @@ button {
 
   width: 100%;
 
-  min-height: 90px;
+  min-height: 92px;
 
-  border: 2px solid var(--blue-border);
+  border: 1.8px solid var(--blue-border);
 
-  border-radius: 18px;
+  border-radius: 20px;
 
-  background: rgba(255,255,255,.93);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.98),
+      rgba(247,250,255,.96)
+    );
 
   display: flex;
 
@@ -288,7 +415,7 @@ button {
   margin-bottom: 14px;
 
   box-shadow:
-    0 7px 18px rgba(20,40,80,.07);
+    0 8px 20px rgba(20,40,80,.08);
 
   text-align: left;
 }
@@ -299,12 +426,12 @@ button {
 
 .card-icon {
 
-  flex: 0 0 54px;
+  flex: 0 0 56px;
 
-  width: 54px;
-  height: 54px;
+  width: 56px;
+  height: 56px;
 
-  border-radius: 14px;
+  border-radius: 16px;
 
   display: flex;
   align-items: center;
@@ -312,33 +439,31 @@ button {
 
   margin-right: 15px;
 
-  font-size: 28px;
+  font-size: 27px;
 
   font-weight: 800;
+
+  color: white;
 }
 
 .card-icon.blue {
 
-  color: white;
-
   background:
     linear-gradient(
-      180deg,
-      #2d83fa,
-      #0d60e8
+      145deg,
+      #4b96ff,
+      #0b5dde
     );
 
 }
 
 .card-icon.red {
 
-  color: white;
-
   background:
     linear-gradient(
-      180deg,
-      #ff5656,
-      #eb2d2d
+      145deg,
+      #ff6b6b,
+      #e9363d
     );
 
 }
@@ -357,7 +482,7 @@ button {
   font-size: 19px;
   font-weight: 800;
 
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
 .card-subtitle {
@@ -367,6 +492,8 @@ button {
   color: var(--gray);
 
   font-size: 14px;
+
+  font-weight: 500;
 }
 
 .card-arrow {
@@ -374,7 +501,7 @@ button {
   color: var(--blue);
 
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 600;
 
   margin-left: 10px;
 }
@@ -384,64 +511,13 @@ button {
 }
 
 
-/* STUDY TIP */
-
-.study-tip {
-
-  width: 100%;
-
-  margin-top: 4px;
-
-  padding: 16px;
-
-  display: flex;
-
-  align-items: flex-start;
-
-  border: 1.5px solid #8ab7ff;
-
-  border-radius: 18px;
-
-  background: var(--blue-light);
-
-  text-align: left;
-}
-
-.tip-icon {
-
-  flex: 0 0 45px;
-
-  font-size: 30px;
-
-  margin-right: 12px;
-}
-
-.tip-title {
-
-  color: var(--blue);
-
-  font-weight: 800;
-
-  font-size: 17px;
-}
-
-.tip-text {
-
-  margin-top: 3px;
-
-  color: #475876;
-
-  font-size: 14px;
-
-  line-height: 1.4;
-}
-
-
 /* =========================================
    STUDY SCREEN
 ========================================= */
 
 #studyScreen {
+
+  position: relative;
 
   flex-direction: column;
 
@@ -468,7 +544,7 @@ button {
 
   width: 100%;
 
-  min-height: 55px;
+  min-height: 56px;
 
   display: flex;
 
@@ -482,17 +558,17 @@ button {
 
   left: 0;
 
-  padding: 9px 12px;
+  padding: 8px 11px;
 
-  border: 1.5px solid #ffaaaa;
+  border: 1.5px solid #ff9da1;
 
   border-radius: 999px;
 
-  background: #fff5f5;
+  background: var(--red-light);
 
   color: var(--red);
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
 
   letter-spacing: .3px;
@@ -502,7 +578,7 @@ button {
 
   padding: 9px 18px;
 
-  border: 1.5px solid #ffd0d0;
+  border: 1.5px solid #bdd1f8;
 
   border-radius: 999px;
 
@@ -514,7 +590,7 @@ button {
   font-weight: 800;
 
   box-shadow:
-    0 5px 12px rgba(40,50,80,.08);
+    0 5px 13px rgba(40,50,80,.08);
 }
 
 
@@ -528,19 +604,19 @@ button {
 
   right: 0;
 
-  height: 36px;
+  height: 35px;
 
-  padding: 0 14px;
+  padding: 0 13px;
 
-  border: 1.5px solid #dc2020;
+  border: 1.5px solid #d82028;
 
   border-radius: 10px;
 
   background:
     linear-gradient(
       180deg,
-      #ff4848,
-      #e72828
+      #ff565c,
+      #e62d35
     );
 
   color: white;
@@ -549,7 +625,7 @@ button {
   font-weight: 800;
 
   box-shadow:
-    0 5px 10px rgba(220,40,40,.18);
+    0 5px 11px rgba(220,40,40,.18);
 }
 
 .missed-button.visible {
@@ -558,9 +634,9 @@ button {
 
 .missed-button.already-missed {
 
-  border-color: #737987;
+  border-color: #717885;
 
-  background: #858b97;
+  background: #858b96;
 }
 
 
@@ -576,14 +652,13 @@ button {
   flex-direction: column;
 
   align-items: center;
-
   justify-content: center;
 
   cursor: pointer;
 }
 
 
-/* BIG FLASH CARD */
+/* STUDY CARD */
 
 .study-card {
 
@@ -601,17 +676,17 @@ button {
 
   border: 2px solid var(--blue-border);
 
-  border-radius: 24px;
+  border-radius: 25px;
 
   background:
     linear-gradient(
       180deg,
-      rgba(255,255,255,.98),
-      rgba(252,253,255,.94)
+      rgba(255,255,255,.99),
+      rgba(248,251,255,.96)
     );
 
   box-shadow:
-    0 12px 25px rgba(20,50,100,.10);
+    0 14px 28px rgba(20,50,100,.12);
 
   overflow: hidden;
 
@@ -621,6 +696,46 @@ button {
 
   align-items: center;
   justify-content: center;
+}
+
+.study-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  top: -105px;
+  right: -85px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(37,116,237,.10),
+      rgba(37,116,237,0)
+    );
+
+  pointer-events: none;
+}
+
+.study-card::after {
+
+  content: "★";
+
+  position: absolute;
+
+  left: 20px;
+  bottom: 18px;
+
+  color: #e4edff;
+
+  font-size: 27px;
+
+  pointer-events: none;
 }
 
 
@@ -674,11 +789,11 @@ button {
 
 .state-outline path {
 
-  fill: #dce5f3;
+  fill: #dce7f6;
 
-  stroke: #7fa5df;
+  stroke: #648fd0;
 
-  stroke-width: 2;
+  stroke-width: 2.2;
 
   vector-effect: non-scaling-stroke;
 }
@@ -694,7 +809,7 @@ button {
 
   padding: 0 20px;
 
-  color: var(--navy);
+  color: var(--navy-dark);
 
   font-size: clamp(42px, 12vw, 66px);
 
@@ -707,8 +822,8 @@ button {
   letter-spacing: -2px;
 
   text-shadow:
-    0 0 12px rgba(255,255,255,.92),
-    0 0 24px rgba(255,255,255,.75);
+    0 0 14px rgba(255,255,255,.95),
+    0 0 26px rgba(255,255,255,.82);
 }
 
 
@@ -728,9 +843,11 @@ button {
 
   font-size: clamp(31px, 8vw, 45px);
 
-  font-weight: 750;
+  font-weight: 800;
 
   text-align: center;
+
+  letter-spacing: -.6px;
 }
 
 
@@ -743,6 +860,7 @@ button {
   color: var(--blue);
 
   font-size: 16px;
+  font-weight: 600;
 
   text-align: center;
 }
@@ -770,7 +888,7 @@ button {
 
   min-height: 58px;
 
-  border-radius: 16px;
+  border-radius: 17px;
 
   font-size: 17px;
   font-weight: 800;
@@ -782,7 +900,7 @@ button {
   color: var(--blue);
 
   box-shadow:
-    0 6px 14px rgba(30,50,90,.08);
+    0 7px 15px rgba(30,50,90,.09);
 }
 
 .nav-row button {
@@ -795,8 +913,8 @@ button {
   background:
     linear-gradient(
       180deg,
-      #0b65eb,
-      #084ec2
+      #116bea,
+      #084fc1
     );
 
   color: white;
@@ -948,9 +1066,14 @@ button {
 
   border: 1px solid #d7e2f5;
 
-  border-radius: 14px;
+  border-radius: 15px;
 
-  background: white;
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f9fbff
+    );
 
   color: var(--navy);
 
@@ -958,7 +1081,7 @@ button {
   font-weight: 650;
 
   box-shadow:
-    0 3px 9px rgba(20,40,80,.04);
+    0 4px 10px rgba(20,40,80,.04);
 }
 
 .state-option input {
@@ -970,7 +1093,7 @@ button {
 }
 
 
-/* DONE BUTTON */
+/* DONE */
 
 .done-button {
 
@@ -994,8 +1117,8 @@ button {
   background:
     linear-gradient(
       180deg,
-      #0c67ed,
-      #084fc6
+      #126ced,
+      #084fc4
     );
 
   color: white;
@@ -1009,7 +1132,7 @@ button {
 
 
 /* =========================================
-   LANDSCAPE LOCK MESSAGE
+   LANDSCAPE
 ========================================= */
 
 @media (orientation: landscape) {
@@ -1046,43 +1169,60 @@ button {
 }
 
 
-/* SMALLER IPHONES */
+/* SMALLER PHONES */
 
 @media (max-height: 720px) {
 
   .logo-circle {
-    width: 54px;
-    height: 54px;
+
+    width: 58px;
+    height: 58px;
+
     margin-bottom: 10px;
   }
 
-  .logo-star {
-    width: 30px;
-    height: 30px;
-    font-size: 17px;
+  .logo-inner {
+
+    width: 34px;
+    height: 34px;
+  }
+
+  .logo-blue {
+
+    font-size: 13px;
   }
 
   .home-title {
-    font-size: 42px;
+
+    font-size: 41px;
   }
 
   .home-subtitle {
-    margin-top: 10px;
-    margin-bottom: 18px;
+
+    margin-top: 9px;
+    margin-bottom: 17px;
   }
 
   .start-button {
+
     min-height: 58px;
-    margin-bottom: 12px;
+
+    margin-bottom: 11px;
   }
 
   .home-card {
+
     min-height: 76px;
+
     margin-bottom: 9px;
   }
 
-  .study-tip {
-    padding: 11px;
+  .card-icon {
+
+    width: 48px;
+    height: 48px;
+
+    flex-basis: 48px;
   }
 
 }
@@ -1090,11 +1230,12 @@ button {
 </style>
 </head>
 
+
 <body>
 
 
 <!-- =====================================
-     HOME SCREEN
+     HOME
 ===================================== -->
 
 <div
@@ -1102,13 +1243,43 @@ button {
   class="screen active"
 >
 
+
+  <div class="home-decoration">
+
+    <div class="blue-glow"></div>
+
+    <div class="flag-stripes"></div>
+
+    <div class="star one">
+      ★
+    </div>
+
+    <div class="star two">
+      ★
+    </div>
+
+    <div class="star three">
+      ★
+    </div>
+
+    <div class="star four">
+      ★
+    </div>
+
+  </div>
+
+
   <div class="home-content">
 
 
     <div class="logo-circle">
 
-      <div class="logo-star">
-        ★
+      <div class="logo-inner">
+
+        <div class="logo-blue">
+          ★
+        </div>
+
       </div>
 
     </div>
@@ -1122,7 +1293,7 @@ button {
 
     <div class="home-subtitle">
       Learn all 50 state capitals<br>
-      in an easy and fun way.
+      at your own pace.
     </div>
 
 
@@ -1130,7 +1301,7 @@ button {
       class="start-button"
       id="startArea"
     >
-      ▣ &nbsp; Tap to Start
+      Tap to Start
     </button>
 
 
@@ -1142,7 +1313,7 @@ button {
     >
 
       <div class="card-icon blue">
-        ★
+        🇺🇸
       </div>
 
       <div class="card-text">
@@ -1201,30 +1372,6 @@ button {
     </div>
 
 
-    <!-- TIP -->
-
-    <div class="study-tip">
-
-      <div class="tip-icon">
-        💡
-      </div>
-
-      <div>
-
-        <div class="tip-title">
-          Study Tip
-        </div>
-
-        <div class="tip-text">
-          Tap once to reveal the capital,
-          then tap again for the next state.
-        </div>
-
-      </div>
-
-    </div>
-
-
   </div>
 
 </div>
@@ -1232,7 +1379,7 @@ button {
 
 
 <!-- =====================================
-     STUDY SCREEN
+     STUDY
 ===================================== -->
 
 <div
@@ -1240,10 +1387,9 @@ button {
   class="screen"
 >
 
+
   <div class="study-shell">
 
-
-    <!-- TOP -->
 
     <div class="study-top">
 
@@ -1270,8 +1416,6 @@ button {
 
     </div>
 
-
-    <!-- TAP AREA -->
 
     <div
       class="study-tap-area"
@@ -1320,8 +1464,6 @@ button {
     </div>
 
 
-    <!-- NAVIGATION -->
-
     <div class="nav">
 
 
@@ -1349,7 +1491,7 @@ button {
         class="home-button"
         id="homeButton"
       >
-        ⌂ &nbsp; Home
+        Home
       </button>
 
 
@@ -1489,7 +1631,7 @@ const states = [
 
 
 /* =========================================
-   STATE OUTLINE DATA
+   MAP DATA
 ========================================= */
 
 let usaMap = null;
@@ -1519,7 +1661,7 @@ try {
 
 
 /* =========================================
-   SAVED STATE SELECTIONS
+   SAVED STATES
 ========================================= */
 
 let selectedStates;
@@ -1569,7 +1711,7 @@ if (
 
 
 /* =========================================
-   SAVED MISSED CAPITALS
+   MISSED
 ========================================= */
 
 let missedStateNames = [];
@@ -1722,7 +1864,7 @@ const stateOutline =
 
 
 /* =========================================
-   SCREEN SWITCHING
+   SCREEN
 ========================================= */
 
 function showScreen(screen) {
@@ -1918,7 +2060,7 @@ function showStateOutline(
 
 
 /* =========================================
-   UPDATE HOME COUNTS
+   COUNTS
 ========================================= */
 
 function updateSelectedCount() {
@@ -1976,7 +2118,7 @@ function updateMissedCount() {
 
 
 /* =========================================
-   SAVE DATA
+   SAVE
 ========================================= */
 
 function saveSelectionsToStorage() {
@@ -2017,7 +2159,7 @@ function saveMissedToStorage() {
 
 
 /* =========================================
-   START NORMAL STUDY
+   START STUDY
 ========================================= */
 
 function startStudy() {
@@ -2064,7 +2206,7 @@ function startStudy() {
 
 
 /* =========================================
-   REVIEW MISSED
+   MISSED STUDY
 ========================================= */
 
 function startMissedStudy() {
@@ -2123,7 +2265,7 @@ function startMissedStudy() {
 
 
 /* =========================================
-   DISPLAY CURRENT STATE
+   DISPLAY STATE
 ========================================= */
 
 function displayState() {
@@ -2164,7 +2306,7 @@ function displayState() {
   ) {
 
     modeTitle.textContent =
-      "↻ REVIEWING MISSED";
+      "REVIEWING MISSED";
 
 
     clearMissedButton
@@ -2251,7 +2393,7 @@ function displayState() {
 
 
     tapHint.textContent =
-      "☝︎  Tap to reveal capital";
+      "Tap to reveal capital";
 
 
     missedButton
@@ -2332,7 +2474,7 @@ function markMissed() {
 
 
 /* =========================================
-   TAP BEHAVIOR
+   TAP
 ========================================= */
 
 function handleStudyTap() {
@@ -2478,7 +2620,7 @@ function clearMissedList() {
 
 
 /* =========================================
-   BUILD STATE SELECTION
+   BUILD SELECTION
 ========================================= */
 
 function buildStateSelection() {
@@ -2562,7 +2704,7 @@ function buildStateSelection() {
 
 
 /* =========================================
-   SAVE SELECTED STATES
+   SAVE SELECTION
 ========================================= */
 
 function saveSelection() {
@@ -2629,11 +2771,8 @@ function saveSelection() {
 
 
 /* =========================================
-   EVENT LISTENERS
+   EVENTS
 ========================================= */
-
-
-/* START */
 
 document
   .getElementById(
@@ -2644,8 +2783,6 @@ document
     startStudy
   );
 
-
-/* CHOOSE STATES */
 
 document
   .getElementById(
@@ -2666,8 +2803,6 @@ document
   );
 
 
-/* REVIEW MISSED */
-
 reviewMissedCard
   .addEventListener(
     "click",
@@ -2675,16 +2810,12 @@ reviewMissedCard
   );
 
 
-/* MAIN TAP */
-
 studyTapArea
   .addEventListener(
     "click",
     handleStudyTap
   );
 
-
-/* MISSED */
 
 missedButton
   .addEventListener(
@@ -2699,8 +2830,6 @@ missedButton
     }
   );
 
-
-/* NEXT */
 
 document
   .getElementById(
@@ -2719,8 +2848,6 @@ document
   );
 
 
-/* PREVIOUS */
-
 document
   .getElementById(
     "previousButton"
@@ -2737,8 +2864,6 @@ document
     }
   );
 
-
-/* HOME */
 
 document
   .getElementById(
@@ -2762,8 +2887,6 @@ document
   );
 
 
-/* CLEAR MISSED LIST */
-
 clearMissedButton
   .addEventListener(
     "click",
@@ -2777,8 +2900,6 @@ clearMissedButton
     }
   );
 
-
-/* SELECT ALL */
 
 document
   .getElementById(
@@ -2805,8 +2926,6 @@ document
   );
 
 
-/* CLEAR ALL */
-
 document
   .getElementById(
     "clearAll"
@@ -2831,8 +2950,6 @@ document
     }
   );
 
-
-/* DONE */
 
 document
   .getElementById(
