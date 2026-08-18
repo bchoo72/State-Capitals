@@ -73,26 +73,21 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   text-align: center;
 }
 
 .home-title {
   font-size: 38px;
   font-weight: 800;
-
   margin-bottom: 38px;
 }
 
 .tap-start {
   width: 100%;
   max-width: 500px;
-
   padding: 35px;
-
   font-size: 27px;
   font-weight: 650;
-
   cursor: pointer;
 }
 
@@ -100,9 +95,7 @@ button {
 .missed-review-button {
   width: 100%;
   max-width: 320px;
-
   margin-top: 16px;
-
   padding: 15px 26px;
 
   border: none;
@@ -128,9 +121,7 @@ button {
 .selected-count,
 .missed-count {
   margin-top: 12px;
-
   font-size: 15px;
-
   color: #666;
 }
 
@@ -142,25 +133,77 @@ button {
   align-items: center;
 }
 
-.mode-title {
-  width: 100%;
 
+/* TOP AREA */
+
+.study-top {
+  width: 100%;
+  max-width: 600px;
+
+  min-height: 46px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode-title {
   text-align: center;
 
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
 
   color: #888;
 
-  min-height: 22px;
+  padding: 0 90px;
 }
+
+
+/* SMALL MISSED BUTTON */
+
+.missed-button {
+  display: none;
+
+  position: absolute;
+
+  right: 0;
+  top: 0;
+
+  min-width: 76px;
+  height: 36px;
+
+  padding: 0 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #c94444;
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+.missed-button.visible {
+  display: block;
+}
+
+.missed-button.already-missed {
+  background: #777;
+}
+
 
 .counter {
   width: 100%;
 
   text-align: center;
 
-  padding-top: 5px;
+  padding-top: 2px;
 
   font-size: 18px;
 
@@ -168,6 +211,9 @@ button {
 
   pointer-events: none;
 }
+
+
+/* MAIN STUDY AREA */
 
 .study-tap-area {
   flex: 1;
@@ -187,7 +233,67 @@ button {
   touch-action: manipulation;
 }
 
+
+/* STATE DISPLAY */
+
+.state-display {
+  position: relative;
+
+  width: 100%;
+  max-width: 520px;
+
+  min-height: 240px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* STATE OUTLINE */
+
+.state-outline {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: min(82vw, 390px);
+  height: 220px;
+
+  opacity: .30;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.state-outline svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+}
+
+.state-outline path {
+  fill: #b8b8be;
+  stroke: #777;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+
+/* STATE NAME */
+
 .state-name {
+  position: relative;
+
+  z-index: 2;
+
   padding: 0 10px;
 
   font-size: clamp(40px, 11vw, 68px);
@@ -195,12 +301,19 @@ button {
   font-weight: 800;
 
   line-height: 1.1;
+
+  text-shadow:
+    0 1px 2px rgba(244,244,247,.9),
+    0 0 10px rgba(244,244,247,.85);
 }
+
+
+/* CAPITAL */
 
 .capital-name {
   min-height: 60px;
 
-  margin-top: 25px;
+  margin-top: 5px;
 
   font-size: clamp(30px, 8vw, 48px);
 
@@ -215,40 +328,6 @@ button {
   font-size: 15px;
 
   color: #999;
-}
-
-
-/* MISSED BUTTON */
-
-.missed-button {
-  display: none;
-
-  width: 100%;
-  max-width: 320px;
-
-  margin-bottom: 14px;
-
-  padding: 15px;
-
-  border: none;
-  border-radius: 14px;
-
-  background: #c94444;
-
-  color: white;
-
-  font-size: 18px;
-  font-weight: 700;
-
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
-}
-
-.missed-button.visible {
-  display: block;
-}
-
-.missed-button.already-missed {
-  background: #777;
 }
 
 
@@ -501,30 +580,59 @@ button {
 
 <div id="studyScreen" class="screen">
 
-  <div
-    class="mode-title"
-    id="modeTitle"
-  ></div>
+
+  <div class="study-top">
+
+    <div
+      class="mode-title"
+      id="modeTitle"
+    ></div>
+
+    <button
+      class="missed-button"
+      id="missedButton"
+    >
+      Missed
+    </button>
+
+  </div>
+
 
   <div
     class="counter"
     id="counter"
   ></div>
 
+
   <div
     class="study-tap-area"
     id="studyTapArea"
   >
 
-    <div
-      class="state-name"
-      id="stateName"
-    ></div>
+
+    <div class="state-display">
+
+
+      <div
+        class="state-outline"
+        id="stateOutline"
+      ></div>
+
+
+      <div
+        class="state-name"
+        id="stateName"
+      ></div>
+
+
+    </div>
+
 
     <div
       class="capital-name"
       id="capitalName"
     ></div>
+
 
     <div
       class="tap-hint"
@@ -533,15 +641,8 @@ button {
       Tap to reveal capital
     </div>
 
+
   </div>
-
-
-  <button
-    class="missed-button"
-    id="missedButton"
-  >
-    Missed
-  </button>
 
 
   <div class="nav">
@@ -558,12 +659,14 @@ button {
 
     </div>
 
+
     <button
       class="home-button"
       id="homeButton"
     >
       Home
     </button>
+
 
     <button
       class="clear-missed-button"
@@ -616,7 +719,7 @@ button {
 </div>
 
 
-<script>
+<script type="module">
 
 
 /* STATES AND CAPITALS */
@@ -677,7 +780,31 @@ const states = [
 ];
 
 
-/* LOAD PREVIOUSLY SAVED STATE SELECTIONS */
+/* LOAD STATE OUTLINE DATA */
+
+let usaMap = null;
+
+try {
+
+  const module =
+    await import(
+      "https://cdn.jsdelivr.net/npm/@svg-maps/usa@2.0.0/+esm"
+    );
+
+  usaMap =
+    module.default || module;
+
+} catch (error) {
+
+  console.log(
+    "State outline map could not be loaded.",
+    error
+  );
+
+}
+
+
+/* LOAD SAVED STATE SELECTIONS */
 
 let selectedStates;
 
@@ -818,6 +945,11 @@ const modeTitle =
     "modeTitle"
   );
 
+const stateOutline =
+  document.getElementById(
+    "stateOutline"
+  );
+
 
 /* SHOW SCREEN */
 
@@ -842,7 +974,7 @@ function showScreen(screen) {
 }
 
 
-/* RANDOMIZE STATES */
+/* SHUFFLE */
 
 function shuffle(array) {
 
@@ -875,7 +1007,125 @@ function shuffle(array) {
 }
 
 
-/* UPDATE NUMBER SELECTED */
+/* SHOW STATE OUTLINE */
+
+function showStateOutline(state) {
+
+  stateOutline.innerHTML = "";
+
+  if (
+    !usaMap ||
+    !Array.isArray(usaMap.locations)
+  ) {
+
+    return;
+
+  }
+
+
+  const location =
+    usaMap.locations.find(
+      function(item) {
+
+        return (
+          item.name.toLowerCase() ===
+          state.toLowerCase()
+        );
+
+      }
+    );
+
+
+  if (
+    !location
+  ) {
+
+    return;
+
+  }
+
+
+  const svgNS =
+    "http://www.w3.org/2000/svg";
+
+
+  const svg =
+    document.createElementNS(
+      svgNS,
+      "svg"
+    );
+
+
+  const path =
+    document.createElementNS(
+      svgNS,
+      "path"
+    );
+
+
+  path.setAttribute(
+    "d",
+    location.path
+  );
+
+
+  svg.appendChild(
+    path
+  );
+
+
+  stateOutline.appendChild(
+    svg
+  );
+
+
+  requestAnimationFrame(
+    function() {
+
+      try {
+
+        const box =
+          path.getBBox();
+
+
+        const padding =
+          Math.max(
+            box.width,
+            box.height
+          ) * .10;
+
+
+        svg.setAttribute(
+          "viewBox",
+          [
+            box.x - padding,
+            box.y - padding,
+            box.width + padding * 2,
+            box.height + padding * 2
+          ].join(" ")
+        );
+
+
+        svg.setAttribute(
+          "preserveAspectRatio",
+          "xMidYMid meet"
+        );
+
+      } catch (error) {
+
+        console.log(
+          "Could not size state outline."
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+/* UPDATE SELECTED COUNT */
 
 function updateSelectedCount() {
 
@@ -893,16 +1143,19 @@ function updateMissedCount() {
   const amount =
     missedStateNames.length;
 
+
   missedCount.textContent =
     amount === 1
       ? "1 missed capital saved"
       : amount +
         " missed capitals saved";
 
+
   reviewMissedButton.textContent =
     "Review Missed (" +
     amount +
     ")";
+
 
   reviewMissedButton.disabled =
     amount === 0;
@@ -923,6 +1176,7 @@ function saveSelectionsToStorage() {
       }
     );
 
+
   localStorage.setItem(
     "stateCapitalSelections",
     JSON.stringify(names)
@@ -931,7 +1185,7 @@ function saveSelectionsToStorage() {
 }
 
 
-/* SAVE MISSED LIST */
+/* SAVE MISSED */
 
 function saveMissedToStorage() {
 
@@ -963,25 +1217,33 @@ function startStudy() {
 
   }
 
-  studyMode = "normal";
+
+  studyMode =
+    "normal";
+
 
   studyOrder =
-    shuffle(selectedStates);
+    shuffle(
+      selectedStates
+    );
+
 
   currentIndex = 0;
 
   capitalVisible = false;
 
+
   showScreen(
     studyScreen
   );
+
 
   displayState();
 
 }
 
 
-/* START MISSED REVIEW */
+/* START MISSED STUDY */
 
 function startMissedStudy() {
 
@@ -997,6 +1259,7 @@ function startMissedStudy() {
 
   }
 
+
   const missedStates =
     states.filter(
       function(state) {
@@ -1008,25 +1271,33 @@ function startMissedStudy() {
       }
     );
 
-  studyMode = "missed";
+
+  studyMode =
+    "missed";
+
 
   studyOrder =
-    shuffle(missedStates);
+    shuffle(
+      missedStates
+    );
+
 
   currentIndex = 0;
 
   capitalVisible = false;
 
+
   showScreen(
     studyScreen
   );
+
 
   displayState();
 
 }
 
 
-/* DISPLAY CURRENT STATE */
+/* DISPLAY STATE */
 
 function displayState() {
 
@@ -1038,18 +1309,30 @@ function displayState() {
 
   }
 
+
   const item =
-    studyOrder[currentIndex];
+    studyOrder[
+      currentIndex
+    ];
+
 
   stateName.textContent =
     item[0];
 
+
+  showStateOutline(
+    item[0]
+  );
+
+
   if (
-    studyMode === "missed"
+    studyMode ===
+    "missed"
   ) {
 
     modeTitle.textContent =
-      "REVIEWING MISSED CAPITALS";
+      "REVIEWING MISSED";
+
 
     clearMissedButton
       .classList.add(
@@ -1058,7 +1341,9 @@ function displayState() {
 
   } else {
 
-    modeTitle.textContent = "";
+    modeTitle.textContent =
+      "";
+
 
     clearMissedButton
       .classList.remove(
@@ -1075,6 +1360,7 @@ function displayState() {
     capitalName.textContent =
       item[1];
 
+
     missedButton
       .classList.add(
         "visible"
@@ -1090,6 +1376,7 @@ function displayState() {
       missedButton.textContent =
         "Missed ✓";
 
+
       missedButton
         .classList.add(
           "already-missed"
@@ -1099,6 +1386,7 @@ function displayState() {
 
       missedButton.textContent =
         "Missed";
+
 
       missedButton
         .classList.remove(
@@ -1125,10 +1413,13 @@ function displayState() {
 
   } else {
 
-    capitalName.textContent = "";
+    capitalName.textContent =
+      "";
+
 
     tapHint.textContent =
       "Tap to reveal capital";
+
 
     missedButton
       .classList.remove(
@@ -1163,7 +1454,7 @@ function displayState() {
 }
 
 
-/* MARK CURRENT CAPITAL MISSED */
+/* MARK MISSED */
 
 function markMissed() {
 
@@ -1176,8 +1467,12 @@ function markMissed() {
 
   }
 
+
   const currentState =
-    studyOrder[currentIndex][0];
+    studyOrder[
+      currentIndex
+    ][0];
+
 
   if (
     !missedStateNames.includes(
@@ -1189,12 +1484,15 @@ function markMissed() {
       currentState
     );
 
+
     saveMissedToStorage();
 
   }
 
+
   missedButton.textContent =
     "Missed ✓";
+
 
   missedButton
     .classList.add(
@@ -1204,7 +1502,7 @@ function markMissed() {
 }
 
 
-/* TAP BEHAVIOR */
+/* STUDY TAP */
 
 function handleStudyTap() {
 
@@ -1237,7 +1535,7 @@ function handleStudyTap() {
 }
 
 
-/* NEXT BUTTON */
+/* NEXT */
 
 function nextState() {
 
@@ -1257,7 +1555,7 @@ function nextState() {
 }
 
 
-/* PREVIOUS BUTTON */
+/* PREVIOUS */
 
 function previousState() {
 
@@ -1276,7 +1574,7 @@ function previousState() {
 }
 
 
-/* CLEAR MISSED LIST */
+/* CLEAR MISSED */
 
 function clearMissedList() {
 
@@ -1288,10 +1586,12 @@ function clearMissedList() {
 
   }
 
+
   const shouldClear =
     confirm(
       "Clear your entire missed capitals list?"
     );
+
 
   if (
     !shouldClear
@@ -1301,15 +1601,19 @@ function clearMissedList() {
 
   }
 
+
   missedStateNames = [];
 
+
   saveMissedToStorage();
+
 
   studyOrder = [];
 
   currentIndex = 0;
 
   capitalVisible = false;
+
 
   showScreen(
     homeScreen
@@ -1318,11 +1622,13 @@ function clearMissedList() {
 }
 
 
-/* BUILD STATE SELECTION SCREEN */
+/* BUILD STATE SELECTION */
 
 function buildStateSelection() {
 
-  stateList.innerHTML = "";
+  stateList.innerHTML =
+    "";
+
 
   states.forEach(
     function(item, index) {
@@ -1331,6 +1637,7 @@ function buildStateSelection() {
         document.createElement(
           "label"
         );
+
 
       label.className =
         "state-option";
@@ -1341,11 +1648,14 @@ function buildStateSelection() {
           "input"
         );
 
+
       checkbox.type =
         "checkbox";
 
+
       checkbox.dataset.index =
         index;
+
 
       checkbox.checked =
         selectedStates.some(
@@ -1365,6 +1675,7 @@ function buildStateSelection() {
           "span"
         );
 
+
       text.textContent =
         item[0];
 
@@ -1373,9 +1684,11 @@ function buildStateSelection() {
         checkbox
       );
 
+
       label.appendChild(
         text
       );
+
 
       stateList.appendChild(
         label
@@ -1387,7 +1700,7 @@ function buildStateSelection() {
 }
 
 
-/* SAVE CHOSEN STATES */
+/* SAVE SELECTION */
 
 function saveSelection() {
 
@@ -1396,7 +1709,9 @@ function saveSelection() {
       "input[type='checkbox']"
     );
 
-  const newSelection = [];
+
+  const newSelection =
+    [];
 
 
   checkboxes.forEach(
@@ -1436,9 +1751,12 @@ function saveSelection() {
   selectedStates =
     newSelection;
 
+
   saveSelectionsToStorage();
 
+
   updateSelectedCount();
+
 
   showScreen(
     homeScreen
@@ -1447,7 +1765,7 @@ function saveSelection() {
 }
 
 
-/* TAP TO START */
+/* START */
 
 document
   .getElementById(
@@ -1474,7 +1792,7 @@ reviewMissedButton
   );
 
 
-/* MAIN STUDY TAP */
+/* STUDY AREA */
 
 studyTapArea
   .addEventListener(
@@ -1546,9 +1864,11 @@ document
 
       event.stopPropagation();
 
+
       showScreen(
         homeScreen
       );
+
 
       updateMissedCount();
 
@@ -1556,7 +1876,7 @@ document
   );
 
 
-/* CLEAR MISSED LIST */
+/* CLEAR MISSED */
 
 clearMissedButton
   .addEventListener(
@@ -1583,7 +1903,9 @@ document
 
       event.stopPropagation();
 
+
       buildStateSelection();
+
 
       showScreen(
         selectionScreen
@@ -1610,7 +1932,8 @@ document
         .forEach(
           function(box) {
 
-            box.checked = true;
+            box.checked =
+              true;
 
           }
         );
@@ -1636,7 +1959,8 @@ document
         .forEach(
           function(box) {
 
-            box.checked = false;
+            box.checked =
+              false;
 
           }
         );
