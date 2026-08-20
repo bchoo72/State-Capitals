@@ -42,8 +42,10 @@
 html,
 body {
   margin: 0;
+
   width: 100%;
   height: 100%;
+
   overflow: hidden;
 
   font-family:
@@ -69,6 +71,7 @@ body {
   -webkit-user-select: none;
 
   touch-action: manipulation;
+
   -webkit-text-size-adjust: 100%;
 }
 
@@ -435,6 +438,7 @@ button {
 
 .card-text {
   flex: 1;
+
   min-width: 0;
 }
 
@@ -477,6 +481,7 @@ button {
 
 #studyScreen {
   flex-direction: column;
+
   align-items: center;
 }
 
@@ -491,12 +496,13 @@ button {
 }
 
 
-/* UPDATED TOP BAR */
+/* TOP BAR - FIXED */
 
 .study-top {
   position: relative;
 
   width: 100%;
+
   min-height: 56px;
 
   display: grid;
@@ -544,7 +550,7 @@ button {
 }
 
 
-/* CENTER COUNT */
+/* CENTER COUNTER */
 
 .counter {
   grid-column: 2;
@@ -609,6 +615,7 @@ button {
 
 .missed-button.already-missed {
   border-color: #717885;
+
   background: #858b96;
 }
 
@@ -1201,6 +1208,7 @@ button {
 
   .home-title {
     font-size: 34px;
+
     line-height: 1.12;
   }
 
@@ -1215,11 +1223,13 @@ button {
 
   .start-button {
     min-height: 56px;
+
     margin-bottom: 10px;
   }
 
   .home-card {
     min-height: 73px;
+
     margin-bottom: 8px;
   }
 
@@ -1759,32 +1769,34 @@ const states = [
 
 /* =========================================
    MAP DATA
+   LOADS IN BACKGROUND
 ========================================= */
 
 let usaMap = null;
 
 
-try {
+import(
+  "https://cdn.jsdelivr.net/npm/@svg-maps/usa@2.0.0/+esm"
+)
+.then(
+  function(mapModule) {
 
-  const mapModule =
-    await import(
-      "https://cdn.jsdelivr.net/npm/@svg-maps/usa@2.0.0/+esm"
+    usaMap =
+      mapModule.default ||
+      mapModule;
+
+  }
+)
+.catch(
+  function(error) {
+
+    console.log(
+      "State outlines could not be loaded.",
+      error
     );
 
-
-  usaMap =
-    mapModule.default ||
-    mapModule;
-
-
-} catch (error) {
-
-  console.log(
-    "State outlines could not be loaded.",
-    error
-  );
-
-}
+  }
+);
 
 
 /* =========================================
@@ -2705,4 +2717,691 @@ function previousState() {
 
 /* =========================================
    CLEAR MISSED
-=========================================
+========================================= */
+
+function clearMissedList() {
+
+  if (
+    missedStateNames.length === 0
+  ) {
+
+    return;
+
+  }
+
+
+  const shouldClear =
+    confirm(
+      "Clear your entire missed capitals list?"
+    );
+
+
+  if (
+    !shouldClear
+  ) {
+
+    return;
+
+  }
+
+
+  missedStateNames =
+    [];
+
+
+  saveMissedToStorage();
+
+
+  buildMissedList();
+
+
+  showScreen(
+    homeScreen
+  );
+
+}
+
+
+/* =========================================
+   REMOVE ONE MISSED STATE
+========================================= */
+
+function removeMissedState(
+  stateNameToRemove
+) {
+
+  missedStateNames =
+    missedStateNames.filter(
+      function(name) {
+
+        return (
+          name !==
+          stateNameToRemove
+        );
+
+      }
+    );
+
+
+  saveMissedToStorage();
+
+
+  buildMissedList();
+
+}
+
+
+/* =========================================
+   BUILD MISSED LIST
+========================================= */
+
+function buildMissedList() {
+
+  missedStateList.innerHTML =
+    "";
+
+
+  const amount =
+    missedStateNames.length;
+
+
+  missedListSubtitle.textContent =
+    amount === 1
+      ? "1 state is currently in your missed list."
+      : amount +
+        " states are currently in your missed list.";
+
+
+  if (
+    amount === 0
+  ) {
+
+    const empty =
+      document.createElement(
+        "div"
+      );
+
+
+    empty.className =
+      "empty-missed";
+
+
+    empty.innerHTML =
+      "<strong>No missed states.</strong><br>You can add one by tapping “Missed” after revealing a capital.";
+
+
+    missedStateList.appendChild(
+      empty
+    );
+
+
+    return;
+
+  }
+
+
+  const missedItems =
+    states.filter(
+      function(state) {
+
+        return missedStateNames.includes(
+          state[0]
+        );
+
+      }
+    );
+
+
+  missedItems.forEach(
+    function(item) {
+
+
+      const row =
+        document.createElement(
+          "div"
+        );
+
+
+      row.className =
+        "missed-state-row";
+
+
+      const info =
+        document.createElement(
+          "div"
+        );
+
+
+      info.className =
+        "missed-state-info";
+
+
+      const name =
+        document.createElement(
+          "div"
+        );
+
+
+      name.className =
+        "missed-state-name";
+
+
+      name.textContent =
+        item[0];
+
+
+      const capital =
+        document.createElement(
+          "div"
+        );
+
+
+      capital.className =
+        "missed-capital-name";
+
+
+      capital.textContent =
+        "Capital: " +
+        item[1];
+
+
+      const removeButton =
+        document.createElement(
+          "button"
+        );
+
+
+      removeButton.className =
+        "remove-missed-button";
+
+
+      removeButton.textContent =
+        "Remove";
+
+
+      removeButton.addEventListener(
+        "click",
+        function() {
+
+          removeMissedState(
+            item[0]
+          );
+
+        }
+      );
+
+
+      info.appendChild(
+        name
+      );
+
+
+      info.appendChild(
+        capital
+      );
+
+
+      row.appendChild(
+        info
+      );
+
+
+      row.appendChild(
+        removeButton
+      );
+
+
+      missedStateList.appendChild(
+        row
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   BUILD STATE SELECTION
+========================================= */
+
+function buildStateSelection() {
+
+  stateList.innerHTML =
+    "";
+
+
+  states.forEach(
+    function(
+      item,
+      index
+    ) {
+
+
+      const label =
+        document.createElement(
+          "label"
+        );
+
+
+      label.className =
+        "state-option";
+
+
+      const checkbox =
+        document.createElement(
+          "input"
+        );
+
+
+      checkbox.type =
+        "checkbox";
+
+
+      checkbox.dataset.index =
+        index;
+
+
+      checkbox.checked =
+        selectedStates.some(
+          function(state) {
+
+            return (
+              state[0] ===
+              item[0]
+            );
+
+          }
+        );
+
+
+      const text =
+        document.createElement(
+          "span"
+        );
+
+
+      text.textContent =
+        item[0];
+
+
+      label.appendChild(
+        checkbox
+      );
+
+
+      label.appendChild(
+        text
+      );
+
+
+      stateList.appendChild(
+        label
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   SAVE SELECTION
+========================================= */
+
+function saveSelection() {
+
+  const checkboxes =
+    stateList.querySelectorAll(
+      "input[type='checkbox']"
+    );
+
+
+  const newSelection =
+    [];
+
+
+  checkboxes.forEach(
+    function(box) {
+
+      if (
+        box.checked
+      ) {
+
+        newSelection.push(
+          states[
+            Number(
+              box.dataset.index
+            )
+          ]
+        );
+
+      }
+
+    }
+  );
+
+
+  if (
+    newSelection.length === 0
+  ) {
+
+    alert(
+      "Please select at least one state."
+    );
+
+    return;
+
+  }
+
+
+  selectedStates =
+    newSelection;
+
+
+  saveSelectionsToStorage();
+
+
+  updateSelectedCount();
+
+
+  showScreen(
+    homeScreen
+  );
+
+}
+
+
+/* =========================================
+   EVENTS
+========================================= */
+
+document
+  .getElementById(
+    "startArea"
+  )
+  .addEventListener(
+    "click",
+    startStudy
+  );
+
+
+document
+  .getElementById(
+    "chooseStates"
+  )
+  .addEventListener(
+    "click",
+    function() {
+
+      buildStateSelection();
+
+
+      showScreen(
+        selectionScreen
+      );
+
+    }
+  );
+
+
+reviewMissedCard
+  .addEventListener(
+    "click",
+    startMissedStudy
+  );
+
+
+viewMissedListCard
+  .addEventListener(
+    "click",
+    function() {
+
+      buildMissedList();
+
+
+      showScreen(
+        missedListScreen
+      );
+
+    }
+  );
+
+
+studyTapArea
+  .addEventListener(
+    "click",
+    handleStudyTap
+  );
+
+
+missedButton
+  .addEventListener(
+    "click",
+    function(event) {
+
+      event.stopPropagation();
+
+
+      markMissed();
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "nextButton"
+  )
+  .addEventListener(
+    "click",
+    function(event) {
+
+      event.stopPropagation();
+
+
+      nextState();
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "previousButton"
+  )
+  .addEventListener(
+    "click",
+    function(event) {
+
+      event.stopPropagation();
+
+
+      previousState();
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "homeButton"
+  )
+  .addEventListener(
+    "click",
+    function(event) {
+
+      event.stopPropagation();
+
+
+      updateMissedCount();
+
+
+      showScreen(
+        homeScreen
+      );
+
+    }
+  );
+
+
+clearMissedButton
+  .addEventListener(
+    "click",
+    function(event) {
+
+      event.stopPropagation();
+
+
+      clearMissedList();
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "selectAll"
+  )
+  .addEventListener(
+    "click",
+    function() {
+
+      stateList
+        .querySelectorAll(
+          "input"
+        )
+        .forEach(
+          function(box) {
+
+            box.checked =
+              true;
+
+          }
+        );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "clearAll"
+  )
+  .addEventListener(
+    "click",
+    function() {
+
+      stateList
+        .querySelectorAll(
+          "input"
+        )
+        .forEach(
+          function(box) {
+
+            box.checked =
+              false;
+
+          }
+        );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "doneSelection"
+  )
+  .addEventListener(
+    "click",
+    saveSelection
+  );
+
+
+document
+  .getElementById(
+    "missedListDone"
+  )
+  .addEventListener(
+    "click",
+    function() {
+
+      updateMissedCount();
+
+
+      showScreen(
+        homeScreen
+      );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "reviewFromList"
+  )
+  .addEventListener(
+    "click",
+    startMissedStudy
+  );
+
+
+document
+  .getElementById(
+    "clearMissedFromList"
+  )
+  .addEventListener(
+    "click",
+    function() {
+
+      if (
+        missedStateNames.length === 0
+      ) {
+
+        return;
+
+      }
+
+
+      const shouldClear =
+        confirm(
+          "Clear your entire missed capitals list?"
+        );
+
+
+      if (
+        !shouldClear
+      ) {
+
+        return;
+
+      }
+
+
+      missedStateNames =
+        [];
+
+
+      saveMissedToStorage();
+
+
+      buildMissedList();
+
+    }
+  );
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+updateSelectedCount();
+
+updateMissedCount();
+
+</script>
+
+</body>
+</html>
